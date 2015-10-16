@@ -1,0 +1,46 @@
+<template name="loanList">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <h2 class="header">Loan list</h2>
+            </div>
+        </div>
+        <div class="row">
+            <a href="{{pathFor 'loan-form'}}" class="waves-effect waves-light btn">Create Loan</a>
+        </div>
+        <div class="row">
+            {{#each loans}}
+            <div class="col s12 m6 l4">
+                <div class="card hoverable">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="http://loremflickr.com/600/400/money?random={{@index}}" alt="{{title}}"/>
+                    </div>
+                    <div class="card-content">
+                        <img src="http://loremflickr.com/200/200/face?random={{@index}}" alt="Igor Smirnov" class="z-depth-1 circle responsive-img activator card-profile-image">
+                        <a class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right" title="details"><i class="mdi-action-info"></i></a>
+                        <a href="{{pathFor 'loan-details'}}" class="btn-floating red btn-move-up waves-effect waves-light darken-2 right" title="join"><i class="mdi-content-add"></i></a>
+                        <span class="card-title activator grey-text text-darken-4">{{title}}</span>
+                        <p>
+                            <span>Amount:</span>
+                            ${{amount}}
+                        </p>
+                        <p>
+                            <span>Period:</span>
+                            {{period}} month
+                        </p>
+                        <p>
+                            <span>Rate:</span>
+                            {{rate}}%
+                        </p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Loan description<i class="material-icons right">close</i></span>
+                        <p>{{description}}</p>
+                        <a href="{{pathFor 'loan-details'}}" class="waves-effect waves-light" title="details">More details</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</template>

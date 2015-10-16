@@ -1,0 +1,1 @@
+Loans.attachSchema(Schemas.Loan);
