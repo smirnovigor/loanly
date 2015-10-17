@@ -22,5 +22,7 @@ iron:router
 anti:fake
 meteorhacks:fast-render
 aldeed:collection2
-accounts-ui-unstyled
-accounts-ui
+useraccounts:materialize
+useraccounts:iron-routing
+softwarerero:accounts-t9n
+less
