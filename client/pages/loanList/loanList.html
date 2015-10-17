@@ -16,7 +16,9 @@
                         <img src="http://loremflickr.com/600/400/money?random={{@index}}" alt="{{title}}"/>
                     </div>
                     <div class="card-content">
-                        <img src="http://loremflickr.com/200/200/face?random={{@index}}" alt="Igor Smirnov" class="z-depth-1 circle responsive-img activator card-profile-image">
+                        <a href="{{pathFor 'userprofile'}}" title="User Profile">
+                            <img src="http://loremflickr.com/200/200/face?random={{@index}}" alt="Igor Smirnov" class="z-depth-1 circle responsive-img activator card-profile-image">
+                        </a>
                         <div class="btn-move-up-panel">
                             <a class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right" title="details"><i class="mdi-action-info"></i></a>
                             <a href="{{pathFor 'loan-details'}}" class="btn-floating red btn-move-up waves-effect waves-light darken-2 right" title="join"><i class="mdi-content-add"></i></a>

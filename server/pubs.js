@@ -6,6 +6,10 @@ Meteor.publish('loan-by-id', function(loanId) {
     return Loans.find(loanId);
 });
 
+Meteor.publish('user-by-id', function(userId) {
+    return Meteor.users.find(userId, {fields: {username:true, profile: true}});
+});
+
 
 Meteor.publish('random', function() {
 
