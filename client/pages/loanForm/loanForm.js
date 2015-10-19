@@ -11,11 +11,10 @@ Template.loanForm.events({
    "submit .new-loan": function(event){
        event.preventDefault();
 
-       console.log('======= insert =========');
-
        var ctx = Loans.simpleSchema().namedContext("loanForm");
        var newLoan = {
            userId: Meteor.userId(),
+           userCreditRating: Meteor.user().userCreditRating,
            title: event.target.title.value,
            description: event.target.description.value,
            amount: parseInt(event.target.amount.value),

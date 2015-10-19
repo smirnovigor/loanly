@@ -26,15 +26,19 @@
                         <span class="card-title activator grey-text text-darken-4">{{title}}</span>
                         <p>
                             <span>Amount:</span>
-                            ${{amount}}
+                            {{money amount}}
                         </p>
                         <p>
                             <span>Period:</span>
-                            {{period}} month
+                            {{periodFilter period}}
                         </p>
                         <p>
                             <span>Rate:</span>
-                            {{rate}}%
+                            {{percentage rate}}
+                        </p>
+                        <p>
+                            <span>User Credit Rating:</span>
+                            {{user.userCreditRating}}
                         </p>
                     </div>
                     <div class="card-reveal">

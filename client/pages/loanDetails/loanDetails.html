@@ -32,5 +32,10 @@
                 </p>
             </div>
         </div>
+        {{#unless currentUserInvestment}}
+            {{>investmentForm loan=this}}
+        {{else}}
+            <p>You currently have owned to this loan {{money currentUserInvestment.amount}}</p>
+        {{/unless}}
     </div>
 </template>

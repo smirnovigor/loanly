@@ -1,0 +1,44 @@
+<template name="investmentList">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <h2 class="header">My investments</h2>
+            </div>
+        </div>
+        <div class="row">
+            <a href="{{pathFor 'loan-list'}}" class="waves-effect waves-light btn">Back to loans</a>
+        </div>
+        {{#each investments}}
+        <div class="row">
+            <div class="card hoverable">
+                <div class="card-content">
+                    <p>
+                        <span>Loan id:</span>
+                        <a href="{{pathFor 'loan-details'}}">{{loanId}}</a>
+                    </p>
+                    <p>
+                        <span>Amount:</span>
+                        {{money amount}}
+                    </p>
+                    <p>
+                        <span>Created at:</span>
+                        {{createdAt}}
+                    </p>
+                    <p>
+                        <span>Estimated Repayment:</span>
+                        {{money estimatedRepayment}}
+                    </p>
+                    <p>
+                        <span>Current Repayment:</span>
+                        {{money currentRepayment}}
+                    </p>
+                    <p>
+                        <span>Status:</span>
+                        {{status}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</template>

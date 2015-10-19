@@ -16,18 +16,18 @@ Loans.allow({
 
 
 // helpers
-//Loans.helpers({
-//    user: function() {
-//        return Users.findOne(this.ownerId);
-//    }
-//});
+Loans.helpers({
+    user: function() {
+        return Meteor.users.findOne(this.userId);
+    }
+});
 
 
 // schema
 Loans.attachSchema(new SimpleSchema({
     userId: {
-        type: String,
-        regEx: SimpleSchema.RegEx.Id
+        type: String
+        //regEx: SimpleSchema.RegEx.Id
     },
     title: {
         type: String,
@@ -52,5 +52,18 @@ Loans.attachSchema(new SimpleSchema({
         decimal: true,
         min: 1,
         max: 20
+    },
+    investments: {
+        type: [Object],
+        optional: true
+    },
+    "investments.$.userId": {
+        type: String,
+        regEx: SimpleSchema.RegEx.Id
+    },
+    "investments.$.amount": {
+        type: Number,
+        min: 100,
+        max: 1000
     }
 }));
