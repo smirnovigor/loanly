@@ -7,3 +7,6 @@ UI.registerHelper('percentage', function(percent){
 UI.registerHelper('periodFilter', function(period){
     return period + ' month';
 });
+UI.registerHelper('dateFilter', function(date, format){
+    return moment(date).format(format);
+});

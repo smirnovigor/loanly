@@ -30,12 +30,16 @@
                     <span>Rate:</span>
                     {{percentage rate}}
                 </p>
+                <p>
+                    <span>Current Fundraising:</span>
+                    {{money currentFundraising}}
+                </p>
             </div>
         </div>
         {{#unless currentUserInvestment}}
             {{>investmentForm loan=this}}
         {{else}}
-            <p>You currently have owned to this loan {{money currentUserInvestment.amount}}</p>
+            <p>You currently have lent to this loan {{money currentUserInvestment.amount}}</p>
         {{/unless}}
     </div>
 </template>

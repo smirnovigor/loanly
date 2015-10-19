@@ -18,6 +18,10 @@ Investments.allow({
 Investments.helpers({
 });
 
+// unique index
+if(Meteor.isServer)
+    Investments._ensureIndex({investorId: 1, loanId: 1}, {unique: true});
+
 
 // schema
 Investments.attachSchema(new SimpleSchema({

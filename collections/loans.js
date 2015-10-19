@@ -19,6 +19,11 @@ Loans.allow({
 Loans.helpers({
     user: function() {
         return Meteor.users.findOne(this.userId);
+    },
+    currentFundraising: function() {
+        return !this.investments ? 0 : this.investments.reduce(function(memo, elem){
+           return memo + elem.amount;
+        }, 0);
     }
 });
 

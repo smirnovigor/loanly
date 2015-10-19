@@ -8,37 +8,58 @@
         <div class="row">
             <a href="{{pathFor 'loan-list'}}" class="waves-effect waves-light btn">Back to loans</a>
         </div>
-        {{#each investments}}
         <div class="row">
-            <div class="card hoverable">
-                <div class="card-content">
-                    <p>
-                        <span>Loan id:</span>
-                        <a href="{{pathFor 'loan-details'}}">{{loanId}}</a>
-                    </p>
-                    <p>
-                        <span>Amount:</span>
-                        {{money amount}}
-                    </p>
-                    <p>
-                        <span>Created at:</span>
-                        {{createdAt}}
-                    </p>
-                    <p>
-                        <span>Estimated Repayment:</span>
-                        {{money estimatedRepayment}}
-                    </p>
-                    <p>
-                        <span>Current Repayment:</span>
-                        {{money currentRepayment}}
-                    </p>
-                    <p>
-                        <span>Status:</span>
-                        {{status}}
-                    </p>
-                </div>
-            </div>
+
+                <table class="centered">
+                    <thead>
+                        <tr>
+                            <th>Loan id</th>
+                            <th>Amount</th>
+                            <th>Created at</th>
+                            <th>Estimated Repayment</th>
+                            <th>Current Repayment</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each investments}}
+                        <tr class="card hoverable card-content">
+                            <td><a href="{{pathFor 'loan-details' _id=loanId}}">{{loanId}}</a></td>
+                            <td>{{money amount}}</td>
+                            <td>{{dateFilter createdAt 'DD.MM.YYYY'}}</td>
+                            <td>{{money estimatedRepayment}}</td>
+                            <td>{{money currentRepayment}}</td>
+                            <td>{{status}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <!--<div class="card-content">-->
+                    <!--<p>-->
+                        <!--<span>Loan id:</span>-->
+                        <!--<a href="{{pathFor 'loan-details'}}">{{loanId}}</a>-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--<span>Amount:</span>-->
+                        <!--{{money amount}}-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--<span>Created at:</span>-->
+                        <!--{{createdAt}}-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--<span>Estimated Repayment:</span>-->
+                        <!--{{money estimatedRepayment}}-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--<span>Current Repayment:</span>-->
+                        <!--{{money currentRepayment}}-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--<span>Status:</span>-->
+                        <!--{{status}}-->
+                    <!--</p>-->
+                <!--</div>-->
         </div>
-        {{/each}}
     </div>
 </template>
