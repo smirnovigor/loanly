@@ -29,3 +29,4 @@ less
 dburles:collection-helpers
 reactive-var
 momentjs:moment
+tap:i18n
