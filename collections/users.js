@@ -26,6 +26,11 @@ Schema.UserProfile = new SimpleSchema({
         type: String,
         regEx: /^[a-z0-9A-z .]{3,30}$/,
         optional: true
+    },
+    lang: {
+        type: String,
+        allowedValues: ['en', 'he'],
+        optional: true
     }
 });
 
