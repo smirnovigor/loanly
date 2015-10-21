@@ -1,0 +1,53 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer.page-footer {
+    margin-top: 60px;
+}
+
+.card {
+    .card-content {
+        position: relative;
+        padding: 40px 20px 20px 20px;
+        border-radius: 0 0 2px 2px;
+
+        .card-profile-image {
+            width: 70px;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+            cursor: pointer;
+            margin-top: -37px;
+        }
+        .btn-move-up-panel{
+            position: absolute;
+            top:0;
+            right: 0;
+            margin-top: -25px;
+
+            .btn-move-up {
+                margin-right: 10px;
+            }
+        }
+    }
+    .card-title {
+        line-height: 48px;
+        font-size: 24px;
+        font-weight: 300;
+    }
+
+    .card-image {
+        min-height: 186px;
+    }
+}
+.header {
+    color: #ee6e73;
+    font-weight: 300;
+}
