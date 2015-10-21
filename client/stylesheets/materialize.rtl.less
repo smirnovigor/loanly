@@ -1,0 +1,99 @@
+.rtl, [dir=rtl]{
+  //General
+  .material-icons{
+    transform: rotateY(180deg)
+  }
+
+  .right{
+    float: left !important;
+  }
+  .left{
+    float: right !important;
+  }
+
+  //nav
+  nav{
+    ul{
+      li{
+        float: right;
+      }
+    }
+  }
+
+  //Forms
+  //-----
+  form {
+    p{
+      text-align: right;
+    }
+  }
+
+  //radio, checkbox
+  [type="radio"]:not(:checked) + label, [type="radio"]:checked + label, [type="checkbox"] + label{
+    padding-left: 0;
+    padding-right: 35px;
+  }
+
+  [type="radio"] + label:before, [type="radio"] + label:after, [type="checkbox"] + label:before, [type="checkbox"].filled-in + label:before, [type="checkbox"].filled-in + label:after{
+    left: auto;
+    right: 0;
+  }
+
+  [type="checkbox"]:checked + label:before{
+    right: 10px;
+  }
+
+  //file
+  .file-field{
+    .btn, .btn-large{
+      float: right;
+    }
+    .file-path-wrapper{
+      padding-left: 0;
+      padding-right: 10px;
+    }
+  }
+
+  .character-counter{
+    float: left !important;
+  }
+
+  //inputs
+  .input-field{
+    label{
+      left: auto;
+      right: 0.8rem;
+    }
+
+    .prefix{
+      //text-align: right;
+      ~ input, ~ textarea, ~label{
+        margin-left:auto;
+        margin-right: 3rem;
+      }
+    }
+
+    .select-wrapper {
+      + label{
+        right: 0;
+      }
+
+      span.caret{
+        right: auto;
+        left: 0;
+      }
+    }
+
+    .dropdown-content {
+      li{
+        text-align: right;
+      }
+    }
+  }
+
+  // Collections
+  // -----------
+  .secondary-content{
+    float: left;
+  }
+}
