@@ -30,3 +30,4 @@ dburles:collection-helpers
 reactive-var
 momentjs:moment
 risul:accounting
+tap:i18n
