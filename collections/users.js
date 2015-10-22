@@ -64,11 +64,10 @@ Meteor.users.attachSchema(new SimpleSchema({
         blackbox: true
     },
     userCreditRating: {
-        type: String,
-        allowedValues: creditRating,
-        autoValue: function(){
-            return creditRating[Math.floor(Math.random() * creditRating.length)];
-        }
+        type: Number,
+        decimal: true,
+        min: 0.001,
+        max: 0.999
     },
     balance: {
         type: Number,
