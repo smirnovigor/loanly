@@ -1,6 +1,16 @@
 var creditRating = ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C'];
 
 
+// helpers
+Meteor.users.helpers({
+    userCreditRatingStr: function() {
+        var creditRating = ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C'];
+        var index = parseInt(creditRating.length * (1 - this.userCreditRating));
+        return creditRating[index];
+    }
+});
+
+// schema
 Schema = {};
 Schema.UserProfile = new SimpleSchema({
     firstName: {
@@ -64,11 +74,10 @@ Meteor.users.attachSchema(new SimpleSchema({
         blackbox: true
     },
     userCreditRating: {
-        type: String,
-        allowedValues: creditRating,
-        autoValue: function(){
-            return creditRating[Math.floor(Math.random() * creditRating.length)];
-        }
+        type: Number,
+        decimal: true,
+        min: 0.001,
+        max: 0.999
     },
     balance: {
         type: Number,

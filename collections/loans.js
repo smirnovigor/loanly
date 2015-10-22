@@ -117,6 +117,12 @@ Loans.attachSchema(new SimpleSchema({
         min: 1,
         max: 20
     },
+    status: {
+        type: String,
+        optional: true,
+        defaultValue: 'waiting',
+        allowedValues: ['waiting', 'active', 'finished']
+    },
     investments: {
         type: [Object],
         optional: true
