@@ -29,7 +29,11 @@ Template.investmentForm.events({
            Investments.insert(newInvestment);
            Loans.update(this.loan._id, { $push: {investments : { userId: Meteor.userId(), amount:parseInt(event.target.amount.value)}}});
 
-           Router.go('/investments');
+           if (this.onSuccess){
+               this.onSuccess();
+           } else {
+               Router.go('/investments');
+           }
 
            event.target.amount.value = '';
            tmp.repaymentRV.set(0);
