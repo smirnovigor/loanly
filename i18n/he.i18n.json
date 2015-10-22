@@ -1,3 +1,25 @@
 {
-  "Loanly" : "ההלוואות שלי"
+  "Loanly" : "ההלוואות שלי",
+  "Loans requests" : "רשימת בקשות להלוואה",
+
+  "loan for other purposes" : "הלוואה למטרה אחרת",
+  "loan for studies" : "הלוואה ללימודים",
+  "loan for apartment" : "הלוואה משלימה לדירה",
+  "loan for renovation" : "הלוואה לשיפוץ",
+  "loan for holiday" : "הלוואה לחופשה",
+  "loan for family event" : "הלוואה לאירוע משפחתי",
+  "loan for buying a product" : "הלוואה לקניית מוצר",
+  "loan for cover debts" : "הלוואה לכיסוי חובות",
+  "loan for marriage" : "הלוואה לחתונה",
+  "loan for cosmetic treatment" : "הלוואה לטיפול קוסמטי",
+
+  "Ends at" : "נשאר עוד",
+  "Years" : "שנים",
+  "Months" : "חודשים",
+  "Days" : "ימים",
+  "Today" : "היום",
+
+  "rate" : "צועה",
+
+  "more details" : "מידע נוסף"
 }

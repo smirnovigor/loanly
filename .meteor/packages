@@ -30,4 +30,5 @@ dburles:collection-helpers
 reactive-var
 momentjs:moment
 risul:accounting
+loanly:auto-investment
 tap:i18n

@@ -1,0 +1,51 @@
+<template name="loanItem">
+    <div class="col s12 l4">
+
+        <div class="card loan-item">
+            <div class="card-header clearfix">
+                <div class="date">
+                    <small>{{_"Ends at"}}</small>
+                    <div>{{time endsAt}}</div>
+                </div>
+
+                <div class="user">
+                    <i class="material-icons {{user.userCreditRating}}" title="{{user.userCreditRating}}">grade</i>
+                    <a href="{{pathFor 'userprofile'}}">{{user.username}}</a>
+                </div>
+
+                <small>{{_ "rate"}}</small>
+                <div class="rate">{{percentage rate}}</div>
+            </div>
+
+            <div class="progress">
+                <div class="determinate" style="width: {{fundedPercentage}}%"></div>
+                <div class="amount">{{money amount}}</div>
+            </div>
+
+            <div class="card-image category-{{categoryId}}" style="background-image: url('{{image}}');">
+                <div class="investments">
+                    <i class="material-icons">perm_identity</i>
+                    <span>{{count investments.length}}</span>
+                </div>
+                <h6 class="card-title">{{title}}</h6>
+            </div>
+
+            <div class="card-action">
+                <a href="{{pathFor 'loan-details'}}">{{_ "more details"}}</a>
+                <a href="{{pathFor 'loan-details'}}" class="btn-floating waves-effect right"><i class="material-icons">add</i></a>
+            </div>
+
+
+
+
+            <!--<div>{{money funded}}</div>-->
+            <!--<div>{{percentage fundedPercentage}}</div>-->
+            <!--<div>{{period}}</div>-->
+
+            <!--<div>{{categoryId}}</div>-->
+            <!--<div>{{_ category}}</div>-->
+
+
+        </div>
+    </div>
+</template>

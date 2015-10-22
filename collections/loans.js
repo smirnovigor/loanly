@@ -1,3 +1,16 @@
+LoansCategories = {
+    0 : 'loan for other purposes',
+    1 : 'loan for studies',
+    2 : 'loan for apartment',
+    3 : 'loan for renovation',
+    4 : 'loan for holiday',
+    5 : 'loan for family event',
+    6 : 'loan for buying a product',
+    7 : 'loan for cover debts',
+    8 : 'loan for marriage',
+    9 : 'loan for cosmetic treatment'
+};
+
 Loans = new Mongo.Collection('loans');
 
 // permission
@@ -16,16 +29,62 @@ Loans.allow({
 
 
 // helpers
-Loans.helpers({
-    user: function() {
-        return Meteor.users.findOne(this.userId);
-    },
-    currentFundraising: function() {
+(function(){
+    var funded = function(){
         return !this.investments ? 0 : this.investments.reduce(function(memo, elem){
-           return memo + elem.amount;
+            return memo + elem.amount;
         }, 0);
-    }
-});
+    };
+
+    Loans.helpers({
+        user: function() {
+            return Meteor.users.findOne(this.userId);
+        },
+        category : function(){
+            return this.categoryId ? LoansCategories[this.categoryId] : LoansCategories[0];
+        },
+        funded: function() {
+            return funded.bind(this)();
+        },
+        fundedPercentage: function() {
+            return Math.floor((funded.bind(this)() / this.amount) * 100);
+        },
+        endsAt : function(){
+            var d = new Date(this.createdAt);
+            d.setMonth(d.getMonth() + this.period);
+            return d;
+        },
+        image : function(){
+            var url = 'http://loremflickr.com/600/300/';
+
+            if (this.categoryId === 0){
+                url += 'house';
+            } else if (this.categoryId === 1){
+                url += 'student';
+            } else if (this.categoryId === 2){
+                url += 'house';
+            } else if (this.categoryId === 3){
+                url += 'living%20room';
+            } else if (this.categoryId === 4){
+                url += 'holiday';
+            } else if (this.categoryId === 5){
+                url += 'house';
+            } else if (this.categoryId === 6){
+                url += 'house';
+            } else if (this.categoryId === 7){
+                url += 'house';
+            } else if (this.categoryId === 8){
+                url += 'house';
+            } else if (this.categoryId === 9){
+                url += 'house';
+            }
+
+            url += '?random=' + Math.floor(Math.random() * 1000);
+
+            return url;
+        }
+    });
+})();
 
 
 // schema
@@ -36,7 +95,7 @@ Loans.attachSchema(new SimpleSchema({
     },
     title: {
         type: String,
-        max: 20
+        max: 512
     },
     description: {
         type: String,
@@ -69,6 +128,15 @@ Loans.attachSchema(new SimpleSchema({
     "investments.$.amount": {
         type: Number,
         min: 100,
-        max: 1000
+        max: 100000
+    },
+    categoryId : {
+        type: Number,
+        min: 0,
+        max: Object.keys(LoansCategories).length -1
+    },
+    createdAt : {
+        type : Date,
+        defaultValue : new Date()
     }
 }));
