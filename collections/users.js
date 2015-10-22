@@ -1,6 +1,16 @@
 var creditRating = ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C'];
 
 
+// helpers
+Meteor.users.helpers({
+    userCreditRatingStr: function() {
+        var creditRating = ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C'];
+        var index = parseInt(creditRating.length * (1 - this.userCreditRating));
+        return creditRating[index];
+    }
+});
+
+// schema
 Schema = {};
 Schema.UserProfile = new SimpleSchema({
     firstName: {

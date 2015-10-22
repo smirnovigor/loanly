@@ -7,7 +7,7 @@ loadTestData = function loadTestData() {
             Meteor.users.insert({
                 username: Fake.sentence(1),
                 createdAt: new Date(),
-                userCreditRating: creaditRating[Math.floor(Math.random() * creaditRating.length)]
+                userCreditRating: Number((Math.random()).toFixed(3))
             });
         }
     }
@@ -18,7 +18,6 @@ loadTestData = function loadTestData() {
             var randomUser = users[Math.floor(Math.random() * users.length)];
             Loans.insert({
                 userId: randomUser._id ,
-                userCreditRating: randomUser.userCreditRating,
                 title: Fake.sentence(1),
                 description: Fake.paragraph(7),
                 amount: 1000 + Number(Math.floor(Math.random() * 10000)),
