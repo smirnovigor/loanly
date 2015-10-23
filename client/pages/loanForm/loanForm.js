@@ -14,6 +14,7 @@ Template.loanForm.events({
        var ctx = Loans.simpleSchema().namedContext("loanForm");
        var newLoan = {
            userId: Meteor.userId(),
+           userCreditRating: Meteor.user().userCreditRating,
            title: event.target.title.value,
            description: event.target.description.value,
            amount: parseInt(event.target.amount.value),

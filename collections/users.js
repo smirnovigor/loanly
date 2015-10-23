@@ -1,10 +1,7 @@
-var creditRating = ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C'];
-
-
 // helpers
 Meteor.users.helpers({
     userCreditRatingStr: function() {
-        var creditRating = ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C'];
+        var creditRating = ['C', 'CC', 'CCC', 'B', 'BB', 'BBB', 'A', 'AA', 'AAA'];
         var index = parseInt(creditRating.length * (1 - this.userCreditRating));
         return creditRating[index];
     }
@@ -81,7 +78,7 @@ Meteor.users.attachSchema(new SimpleSchema({
         // patch for demo only
         autoValue: function() {
             if (this.isInsert) {
-                return Number((Math.random()).toFixed(3));
+                return Number(Math.random().toFixed(3));
             }
         }
     },

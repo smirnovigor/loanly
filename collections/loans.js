@@ -93,6 +93,12 @@ Loans.attachSchema(new SimpleSchema({
         type: String
         //regEx: SimpleSchema.RegEx.Id
     },
+    userCreditRating: {
+        type: Number,
+        decimal: true,
+        min: 0.001,
+        max: 0.999
+    },
     title: {
         type: String,
         max: 512
