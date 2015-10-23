@@ -1,13 +1,10 @@
-var creaditRating = ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C'];
-
 loadTestData = function loadTestData() {
 
     if (Meteor.users.find().count() === 0) {
         for (var i = 0; i < 3; i++) {
             Meteor.users.insert({
                 username: Fake.sentence(1),
-                createdAt: new Date(),
-                userCreditRating: creaditRating[Math.floor(Math.random() * creaditRating.length)]
+                createdAt: new Date()
             });
         }
     }
