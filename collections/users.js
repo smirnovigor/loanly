@@ -77,11 +77,23 @@ Meteor.users.attachSchema(new SimpleSchema({
         type: Number,
         decimal: true,
         min: 0.001,
-        max: 0.999
+        max: 0.999,
+        // patch for demo only
+        autoValue: function() {
+            if (this.isInsert) {
+                return Number((Math.random()).toFixed(3));
+            }
+        }
     },
     balance: {
         type: Number,
-        defaultValue: 0
+        decimal: true,
+        // patch for demo only
+        autoValue: function() {
+            if (this.isInsert) {
+                return Number((Math.random() * 10000).toFixed(2));
+            }
+        }
     }
 }));
 
