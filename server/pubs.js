@@ -1,6 +1,58 @@
 // ## loans
+var buildSortParams = function(sortField, sortDirection) {
+    var sortParams = {};
+    var direction = sortDirection || 1;
+    if (direction === 'desc') {
+        direction = -1;
+    } else {
+        direction = 1;
+    }
+
+    var field = sortField || 'createdAt';
+    if (sortField === 'amount') {
+        field = 'amount';
+    } else if (sortField === 'rate') {
+        field = 'rate';
+    }
+
+    sortParams[field] = direction;
+
+    return sortParams;
+};
+
 Meteor.publish('loans', function() {
     return Loans.find();
+});
+
+Meteor.publish('loans-list', function(skipCount, sortField, sortDirection) {
+    //Meteor._sleepForMs(1000);
+    var positiveIntegerCheck = Match.Where(function(x) {
+        check(x, Match.Integer);
+        return x >= 0;
+    });
+
+    check(skipCount, positiveIntegerCheck);
+
+    Counts.publish(this, 'loansCount', Loans.find(), {
+        noReady: true
+    });
+
+    console.log('sortDirection', sortDirection);
+    var sortParams = buildSortParams(sortField, sortDirection);
+    console.log(sortParams);
+
+    return Loans.find({}, {
+        limit: parseInt(Meteor.settings.public.recordsPerPage), // records to show per page
+        skip: skipCount,
+        sort: sortParams
+    });
+});
+
+Meteor.publish('newestCustomer', function() {
+    return Loans.find({}, {
+        limit: 1,
+        sort: {'createdAt': -1}
+    });
 });
 
 Meteor.publish('loan-by-id', function(loanId) {

@@ -22,5 +22,12 @@
   "rate" : "צועה",
 
   "more details" : "מידע נוסף",
-  "close" : "סגור"
+  "close" : "סגור",
+
+  "Sort by" : "מיין לפי",
+  "Choose your sort option" : "בחר את צורת המיון שלך",
+  "High rate" : "צועה גבוהה",
+  "Low amount" : "סבום נמוך",
+  "Nearing completion" : "קרוב לסיום"
+
 }
