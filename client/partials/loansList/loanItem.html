@@ -1,7 +1,16 @@
 <template name="loanItem">
-    <div class="col s12 l4">
-        <p>{{myLoansList}}</p>
-        <div class="card loan-item">
+    <div class="col s12 l4 loan-item">
+        {{#if isOwner}}
+        <p>
+            <ul class="user-actions">
+                {{#if isWaiting}}<li><a href="#" class="right">{{_ "Edit"}}</a></li>{{/if}}
+                <li><a href="#" class="right">{{_ "Cancel"}}</a></li>
+            </ul>
+            {{#if isWaiting}}(*) {{_ "Waiting for approval"}}{{/if}}
+        </p>
+        {{/if}}
+
+        <div class="card">
             <div class="card-header clearfix">
                 <div class="date">
                     <small>{{_"Ends at"}}</small>
@@ -32,7 +41,10 @@
 
             <div class="card-action">
                 <a href="{{pathFor 'loan-details'}}">{{_ "more details"}}</a>
+
+                {{#unless isOwner}}
                 <button class="btn-floating waves-effect right add"><i class="material-icons">add</i></button>
+                {{/unless}}
             </div>
         </div>
     </div>

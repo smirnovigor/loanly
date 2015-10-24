@@ -24,7 +24,7 @@ Meteor.publish('loans', function() {
     return Loans.find();
 });
 
-Meteor.publish('loans-list', function(skipCount, sortField, sortDirection) {
+Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, userId) {
     //Meteor._sleepForMs(1000);
     var positiveIntegerCheck = Match.Where(function(x) {
         check(x, Match.Integer);
@@ -33,23 +33,25 @@ Meteor.publish('loans-list', function(skipCount, sortField, sortDirection) {
 
     check(skipCount, positiveIntegerCheck);
 
-    Counts.publish(this, 'loansCount', Loans.find(), {
+    var query = {};
+    if (userId){
+        query.userId = this.userId;
+    } else {
+        query.userId = {$ne : this.userId};
+    }
+
+    Counts.publish(this, 'loansCount', Loans.find(query), {
         noReady: true
     });
 
     var sortParams = buildSortParams(sortField, sortDirection);
 
-    return Loans.find({}, {
+    console.log(sortParams);
+
+    return Loans.find(query, {
         limit: parseInt(Meteor.settings.public.recordsPerPage), // records to show per page
         skip: skipCount,
         sort: sortParams
-    });
-});
-
-Meteor.publish('newestCustomer', function() {
-    return Loans.find({}, {
-        limit: 1,
-        sort: {'createdAt': -1}
     });
 });
 

@@ -30,6 +30,10 @@
   "Low amount" : "סבום נמוך",
   "Nearing completion" : "קרוב לסיום",
 
-  "My loans requests" : "רשימת הבקשות שלי"
+  "My loans requests" : "רשימת הבקשות שלי",
+  "Waiting for approval" : "ממתין לאישור",
+
+  "Edit" : "ערוך",
+  "Cancel" : "בטל"
 
 }
