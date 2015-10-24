@@ -18,13 +18,15 @@ Template.loanForm.events({
            description: event.target.description.value,
            amount: parseInt(event.target.amount.value),
            period: parseInt(event.target.period.value),
-           rate: parseInt(event.target.rate.value)
+           rate: parseInt(event.target.rate.value),
+           categoryId : 0,
+           createdAt : new Date
        };
 
        if(ctx.validate(newLoan)){
            Loans.insert(newLoan);
 
-           Router.go('/loans');
+           Router.go('/my-loans');
 
            event.target.title.value = '';
            event.target.description.value = '';

@@ -22,15 +22,7 @@ Template.loanList.onCreated(function() {
 
 Template.loanList.helpers({
     loans: function(){
-        //return [];
-        return Loans.find();
-        //return Loans.find({
-        //    //'userId' : {$ne : Meteor.userId()}
-        //    //'investments' : {$elemMatch : {
-        //    //    //TODO:: fix not operator
-        //    //    userId : {$not : 'Gp3cbLEmcQqGXrZB7'}
-        //    //}}
-        //});
+        return Loans.find({'userId' : {$ne : Meteor.userId()}});
     },
     currentLoan : function(){
         return Session.get('currentLoan');
@@ -74,7 +66,9 @@ Template.loanList.events({
             sortDirection : sortDirection
         });
 
-        window.location.href = url;
+
+        Router.go(url);
+        //window.location.href = url;
     }
 });
 

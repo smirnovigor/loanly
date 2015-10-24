@@ -1,6 +1,6 @@
 <template name="loanItem">
     <div class="col s12 l4">
-
+        <p>{{myLoansList}}</p>
         <div class="card loan-item">
             <div class="card-header clearfix">
                 <div class="date">
@@ -34,18 +34,6 @@
                 <a href="{{pathFor 'loan-details'}}">{{_ "more details"}}</a>
                 <button class="btn-floating waves-effect right add"><i class="material-icons">add</i></button>
             </div>
-
-
-
-
-            <!--<div>{{money funded}}</div>-->
-            <!--<div>{{percentage fundedPercentage}}</div>-->
-            <!--<div>{{period}}</div>-->
-
-            <!--<div>{{categoryId}}</div>-->
-            <!--<div>{{_ category}}</div>-->
-
-
         </div>
     </div>
 </template>
