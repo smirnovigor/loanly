@@ -8,16 +8,46 @@
         <div class="row">
             <a href="{{pathFor 'loan-list'}}" class="waves-effect waves-light btn">Back to loans</a>
         </div>
-        <div class="row">
-            <p>
-               <span>Computed Profit:</span>
-                {{computedProfit}}
+
+        <form class="calculate-investment">
+            <p class="range-field">
+                <label for="amountId">Amount</label>
+                <div>
+                    <output for="amountId" name="amountOutput" class="range-value">25000</output>
+                    <input id="amountId" type="range" name="amount" min="5000" max="50000" step="100"/>
+                </div>
             </p>
-            <p>
-               <span>Computed Rate:</span>
-                {{computedRate}}
+            <p class="range-field">
+                <label for="periodId">Period</label>
+                <div>
+                    <output for="periodId" name="periodOutput" class="range-value">21</output>
+                    <input id="periodId" type="range" name="period" min="6" max="36" />
+                </div>
             </p>
-        </div>
+            <p class="range-field">
+                <label for="riskId">Risk</label>
+                <div>
+                    <output for="riskId" name="riskOutput" class="range-value">0.5</output>
+                    <input id="riskId" type="range" name="risk" min="0" max="1" step="0.05"/>
+                </div>
+            </p>
+            <div class="row">
+                <p>
+                    <label for="computedProfitId">Computed Profit:</label>
+                    <span id="computedProfitId">{{computedProfit}}</span>
+                </p>
+                <p>
+                    <label for="computedRateId">Computed Rate:</label>
+                    <span id="computedRateId">{{computedRate}}</span>
+                </p>
+                <p>
+                    <input type="checkbox" id="autoInvestmentForRepaymentsId"/>
+                    <label for="autoInvestmentForRepaymentsId">Auto Investment For Repayment</label>
+                </p>
+            </div>
+            <button type="submit" class="waves-effect waves-light btn">Accept</button>
+        </form>
+
         <div class="row">
             <table class="centered">
                 <thead>
@@ -25,6 +55,7 @@
                     <th>Loan id</th>
                     <th>Rate</th>
                     <th>User Credit Rating</th>
+                    <th>My part</th>
                     <th>Investment Total Amount</th>
                     <th>Status</th>
                     <th>Period</th>
@@ -36,6 +67,7 @@
                         <td><a href="{{pathFor 'loan-details'}}">{{_id}}</a></td>
                         <td>{{percentage rate}}</td>
                         <td>{{userCreditRating}}</td>
+                        <td>{{money myPart}}</td>
                         <td>{{money investmentTotalAmount}}</td>
                         <td>{{status}}</td>
                         <td>{{periodFilter period}}</td>

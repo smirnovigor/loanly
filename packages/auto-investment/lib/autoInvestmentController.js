@@ -3,27 +3,39 @@ AutoInvestment = class AutoInvestment {
 
     constructor(amount, period = 12, risk = 0.5){
 
-        this.amount = amount;
-        this.period = period;
-        this.risk   = risk;
+        this.amount = Number(amount);
+        this.period = Number(period);
+        this.risk   = Number(risk);
 
         this.calculate();
     }
 
     calculate(){
+        this.maxInvestmentPerLoan = 500;
 
-        // find compatible loans (uncompleted, with compatible risk and period)
-        // show to user computed investment
-        // make investment
+        do {
+            console.log('calculating auto investment with %s amount, max investment per loan %s, for %s month period and %s risk', this.amount, this.maxInvestmentPerLoan, this.period, this.risk);
 
-        console.log('calculating auto investment with %s amount, for %s month period and %s risk', this.amount, this.period, this.risk);
+            this.computedProfit = 0;
+            this.computedRate = 0;
 
-        var maxInvestmentPerLoan = 500;
-        var loansLimit = parseInt(this.amount / maxInvestmentPerLoan);
+            this.calculateLoans();
+            this.calculateRateAndProfit();
 
-        // check bounderis
+        } while(this.isCompleted());
+
+        this.calculateInvestorPartInLoans();
+    }
+
+    calculateLoans(){
+
+        var loansLimit = parseInt(this.amount / this.maxInvestmentPerLoan) + 1;
         var minUserCreditRating = Number(((1 - this.risk) - 0.2).toFixed(3));
         var maxUserCreditRating = Number(((1 - this.risk) + 0.2).toFixed(3));
+
+        // check the boundaries
+        minUserCreditRating = minUserCreditRating < 0 ? 0 : minUserCreditRating;
+        maxUserCreditRating = maxUserCreditRating > 1 ? 1 : maxUserCreditRating;
 
         var query = {
             status: 'waiting',
@@ -46,16 +58,63 @@ AutoInvestment = class AutoInvestment {
                     investmentTotalAmount: {$sum: '$investments.amount'}
                 }
             },
-            {$match: {investmentTotalAmount : {$gte: maxInvestmentPerLoan}}},
+            {$match: {investmentTotalAmount : {$gte: this.maxInvestmentPerLoan}}},
             {$sort: {rate: -1}}, // get the loans with higher rate
             {$limit: loansLimit}
-
         ];
 
         this.compatibleLoans = Loans.aggregate(pipeline);
-        this.computedProfit = 100;
-        this.computedRate = 3.4
+    }
 
+    calculateRateAndProfit(){
+
+        var years = this.period / 12;
+
+        for(let loan of this.compatibleLoans){
+            var profitRate = (loan.rate / 100) * years;
+            this.computedProfit += this.maxInvestmentPerLoan * (1 + profitRate);
+        }
+
+        this.computedRate = ((this.computedProfit / this.amount) - 1) / years * 100;
+
+        // set decimal
+        this.computedRate = this.computedRate.toFixed(2);
+        this.computedProfit = this.computedProfit.toFixed(2);
+    }
+
+    calculateInvestorPartInLoans(){
+
+        var totalAmount = this.amount;
+
+        for(let loan of this.compatibleLoans){
+            if(totalAmount > this.maxInvestmentPerLoan){
+                loan.myPart = this.maxInvestmentPerLoan;
+            }
+            else{
+                loan.myPart = totalAmount;
+            }
+            totalAmount -= this.maxInvestmentPerLoan;
+        }
+    }
+
+    isCompleted(){
+
+        if(this.compatibleLoans.length === 0){
+            this.computedRate = 0;
+            this.computedProfit = 0;
+            console.error('There is no loans compatible for current request!');
+            return false;
+        }
+
+        if(this.amount <= this.maxInvestmentPerLoan * this.compatibleLoans.length){
+            return false; // successful finished
+        }
+
+        // increment max investment per loan, based on loans count.
+        this.maxInvestmentPerLoan += Math.round(this.maxInvestmentPerLoan * (1 / this.compatibleLoans.length));
+        this.maxInvestmentPerLoan = this.maxInvestmentPerLoan > this.amount ? this.amount : this.maxInvestmentPerLoan;
+
+        return true;
     }
 
     toObject(){
