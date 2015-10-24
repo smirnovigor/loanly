@@ -103,6 +103,18 @@ Loans.attachSchema(new SimpleSchema({
         type: String,
         max: 512
     },
+    title_sort: {
+        type: String,
+        optional: true,
+        autoValue: function() {
+            var title = this.field("title");
+            if (title.isSet) {
+                return title.value.toLowerCase();
+            } else {
+                this.unset(); // Prevent user from supplying her own value
+            }
+        }
+    },
     description: {
         type: String,
         max: 500
