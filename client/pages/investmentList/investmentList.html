@@ -13,8 +13,8 @@
                 <thead>
                     <tr>
                         <th>Loan id</th>
-                        <th>Amount</th>
                         <th>Created at</th>
+                        <th>Amount</th>
                         <th>Estimated Repayment</th>
                         <th>Current Repayment</th>
                         <th>Status</th>
@@ -24,11 +24,11 @@
                     {{#each investments}}
                     <tr class="card hoverable card-content">
                         <td><a href="{{pathFor 'loan-details' _id=loanId}}">{{loanId}}</a></td>
-                        <td>{{money amount}}</td>
                         <td>{{dateFilter createdAt 'DD.MM.YYYY'}}</td>
+                        <td>{{money amount}}</td>
                         <td>{{money estimatedRepayment}}</td>
                         <td>{{money currentRepayment}}</td>
-                        <td>{{status}}</td>
+                        <td>{{loan.status}}</td>
                     </tr>
                     {{/each}}
                 </tbody>

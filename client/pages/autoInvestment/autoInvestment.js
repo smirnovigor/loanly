@@ -15,11 +15,18 @@ Template.autoInvestment.helpers({
 });
 
 Template.autoInvestment.events({
-    'submit .calculate-investment' : function(event){
+    'submit .calculate-investment' : function(event, tmp){
         event.preventDefault();
 
+        if(!Meteor.userId()){
+            Router.go('/sign-in');
+        }
 
+        createInvestments(tmp.compatibleLoansRV.get().compatibleLoans);
+
+        Router.go('/investments');
     },
+
     'input .calculate-investment' : function(event){
         event.preventDefault();
 
@@ -27,6 +34,7 @@ Template.autoInvestment.events({
         event.currentTarget.periodOutput.value = event.currentTarget.period.value;
         event.currentTarget.riskOutput.value   = event.currentTarget.risk.value;
     },
+
     'change .calculate-investment' : function(event, tmp){
         event.preventDefault();
 
@@ -42,3 +50,31 @@ Template.autoInvestment.events({
         });
     }
 });
+
+var createInvestments = function(loans){
+    for(let loan of loans){
+
+        var newInvestment = {
+            investorId: Meteor.userId(),
+            loanId: loan._id,
+            amount: parseInt(loan.myPart),
+            estimatedRepayment: calculateRepayment(loan)
+        };
+
+        Investments.insert(newInvestment);
+
+        var updateObject = {$push: {investments: {userId: Meteor.userId(), amount:loan.myPart}}};
+
+        if(loan.investmentTotalAmount + loan.myPart >= loan.amount){
+            updateObject.$set =  {status: 'active'};
+        }
+
+        Loans.update(loan._id, updateObject);
+    }
+};
+
+var calculateRepayment = function(loan){
+    var years = loan.period / 12;
+    var profitRate = (loan.rate / 100) * years;
+    return loan.myPart * (1 + profitRate);
+};

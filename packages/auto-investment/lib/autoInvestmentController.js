@@ -40,6 +40,7 @@ AutoInvestment = class AutoInvestment {
         var query = {
             status: 'waiting',
             period: {$lte: this.period},
+            investments: {$not: {$elemMatch: {userId: Meteor.userId()}}},
             $and : [
                 {userCreditRating: {$gte: minUserCreditRating}},
                 {userCreditRating: {$lte: maxUserCreditRating}}
@@ -52,13 +53,37 @@ AutoInvestment = class AutoInvestment {
             {$group: {
                     _id: '$_id',
                     rate: {$first: "$rate"},
+                    amount: {$first: "$amount"},
                     status: {$first: "$status"},
                     period: {$first: "$period"},
                     userCreditRating: {$first: "$userCreditRating"},
                     investmentTotalAmount: {$sum: '$investments.amount'}
                 }
             },
-            {$match: {investmentTotalAmount : {$gte: this.maxInvestmentPerLoan}}},
+            {$project: { // calculate investmentTotalAndMyPart
+                    _id: 1,
+                    rate: 1,
+                    amount: 1,
+                    status: 1,
+                    period: 1,
+                    userCreditRating: 1,
+                    investmentTotalAmount: 1,
+                    investmentTotalAndMyPart: { $add: [ "$investmentTotalAmount", this.maxInvestmentPerLoan ] }
+                }
+            },
+            {$project: { // compare calculated investmentTotalAndMyPart and amount
+                    _id: 1,
+                    rate: 1,
+                    amount: 1,
+                    status: 1,
+                    period: 1,
+                    userCreditRating: 1,
+                    investmentTotalAmount: 1,
+                    investmentTotalAndMyPart: 1,
+                    match: {$gte: ["$amount", "$investmentTotalAndMyPart"]}
+                }
+            },
+            {$match: {match: true}},
             {$sort: {rate: -1}}, // get the loans with higher rate
             {$limit: loansLimit}
         ];

@@ -16,6 +16,9 @@ Investments.allow({
 
 // helpers
 Investments.helpers({
+    loan: function(){
+        return Loans.findOne(this.loanId);
+    }
 });
 
 // unique index
@@ -35,8 +38,8 @@ Investments.attachSchema(new SimpleSchema({
     },
     amount: {
         type: Number,
-        min: 100,
-        max: 1000
+        min: 1,
+        max: 50000
     },
     createdAt: {
         type: Date,
@@ -51,14 +54,9 @@ Investments.attachSchema(new SimpleSchema({
             }
         }
     },
-    status: {
-        type: String,
-        optional: true,
-        defaultValue: 'waiting',
-        allowedValues: ['waiting', 'active', 'finished']
-    },
     estimatedRepayment: {
-        type: Number
+        type: Number,
+        decimal: true
     },
     currentRepayment: {
         type: Number,

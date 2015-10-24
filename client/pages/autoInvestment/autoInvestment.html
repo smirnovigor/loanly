@@ -55,10 +55,13 @@
                     <th>Loan id</th>
                     <th>Rate</th>
                     <th>User Credit Rating</th>
+                    <th>Amount</th>
                     <th>My part</th>
                     <th>Investment Total Amount</th>
                     <th>Status</th>
                     <th>Period</th>
+                    <th>investmentTotalAndMyPart</th>
+                    <th>match</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -67,10 +70,13 @@
                         <td><a href="{{pathFor 'loan-details'}}">{{_id}}</a></td>
                         <td>{{percentage rate}}</td>
                         <td>{{userCreditRating}}</td>
+                        <td>{{money amount}}</td>
                         <td>{{money myPart}}</td>
                         <td>{{money investmentTotalAmount}}</td>
                         <td>{{status}}</td>
                         <td>{{periodFilter period}}</td>
+                        <td>{{money investmentTotalAndMyPart}}</td>
+                        <td>{{match}}</td>
                     </tr>
                 {{/each}}
                 </tbody>
