@@ -11,9 +11,8 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2.0.2');
   api.use('ecmascript');
-  api.addFiles('lib/autoInvestmentController.js');
-
-  api.export("AutoInvestment", ['client', 'server']);
+  api.addFiles('lib/autoInvestmentController.js', ['server']);
+  api.addFiles('methods/methods.js', ['server']);
 });
 
 Package.onTest(function(api) {
