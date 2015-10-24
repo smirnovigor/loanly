@@ -2,7 +2,7 @@
  * Created by igor on 10/10/15.
  */
 
-Template.loanList.onCreated(function() {
+Template.loansList.onCreated(function() {
 
     var template = this;
 
@@ -10,27 +10,28 @@ Template.loanList.onCreated(function() {
         var currentPage = currentLoansPage();
         var skipCount = (currentPage - 1) * Meteor.settings.public.recordsPerPage; // 3 records per page
 
+        var userId = false;
+        if (template.data && template.data.myLoansList){
+            userId = Meteor.userId();
+        }
+
         template.subscribe(
             'loans-list',
             skipCount,
             Router.current().params.sortField,
-            Router.current().params.sortDirection
+            Router.current().params.sortDirection,
+            userId
         );
     });
 });
 
 
-Template.loanList.helpers({
+Template.loansList.helpers({
+    selected : function(a){
+        return (a == Router.current().params.sortField) ? 'selected' : '';
+    },
     loans: function(){
-        //return [];
-        return Loans.find();
-        //return Loans.find({
-        //    //'userId' : {$ne : Meteor.userId()}
-        //    //'investments' : {$elemMatch : {
-        //    //    //TODO:: fix not operator
-        //    //    userId : {$not : 'Gp3cbLEmcQqGXrZB7'}
-        //    //}}
-        //});
+        return Loans.find({});
     },
     currentLoan : function(){
         return Session.get('currentLoan');
@@ -43,12 +44,28 @@ Template.loanList.helpers({
     prevPage: function() {
         var currentPage = currentLoansPage();
         var previousPage = currentPage === 1 ? 1 : currentPage - 1;
-        return Router.routes.loanList.path({page: previousPage});
+
+        var route;
+        if (this.myLoansList){
+            route = Router.routes.myLoans;
+        } else {
+            route = Router.routes.loanList;
+        }
+
+        return route.path({page: previousPage});
     },
     nextPage: function() {
         var currentPage = currentLoansPage();
         var nextPage = hasMorePages() ? currentPage + 1 : currentPage;
-        return Router.routes.loanList.path({page: nextPage});
+
+        var route;
+        if (this.myLoansList){
+            route = Router.routes.myLoans;
+        } else {
+            route = Router.routes.loanList;
+        }
+
+        return route.path({page: nextPage});
     },
     prevPageClass: function() {
         return currentLoansPage() <= 1 ? "disabled" : "";
@@ -59,22 +76,28 @@ Template.loanList.helpers({
 });
 
 
-Template.loanList.events({
+Template.loansList.events({
     "change .sort-option": function (event, tmp) {
         var sortField = event.target.value;
         var sortDirection = 'desc';
 
-        if (sortDirection === 'amount'){
+        if (sortField === 'amount'){
             sortDirection = 'asc';
         }
 
-        var url = Router.routes.loanList.path({
+
+        var routeName;
+        if (this.myLoansList){
+            routeName = 'myLoans';
+        } else {
+            routeName = 'loansList';
+        }
+
+        Router.go(routeName, {
             page: Router.current().params.page,
             sortField : sortField,
             sortDirection : sortDirection
         });
-
-        window.location.href = url;
     }
 });
 

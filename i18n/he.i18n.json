@@ -28,6 +28,12 @@
   "Choose your sort option" : "בחר את צורת המיון שלך",
   "High rate" : "צועה גבוהה",
   "Low amount" : "סבום נמוך",
-  "Nearing completion" : "קרוב לסיום"
+  "Nearing completion" : "קרוב לסיום",
+
+  "My loans requests" : "רשימת הבקשות שלי",
+  "Waiting for approval" : "ממתין לאישור",
+
+  "Edit" : "ערוך",
+  "Cancel" : "בטל"
 
 }

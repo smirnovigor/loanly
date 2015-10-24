@@ -1,5 +1,5 @@
 .loan-item{
-  &.card{
+  .card{
     .card-header{
       padding: 10px 20px;
     }
@@ -30,6 +30,28 @@
   .category-7{background-color: lightsalmon}
   .category-8{background-color: lightseagreen}
   .category-9{background-color: lightsteelblue}
+
+  .user-actions{
+    list-style: none;
+    li{
+      margin: 0;
+      float: left;
+      padding-right: 5px;
+      padding-left: 5px;
+      border-right: 1px solid #333;
+
+      &:last-child{
+        border-right: none;
+      }
+      &:first-child{
+        padding-left: 0;
+      }
+
+      a{
+        line-height: 15px;
+      }
+    }
+  }
 
   .user{
     i, a{

@@ -26,7 +26,8 @@ loadTestData = function loadTestData() {
                 period: 5 + Number(Math.floor(Math.random() * 25)),
                 rate: rateBasedOnCreditRating,
                 categoryId : Number(Math.random() * 9).toFixed(), //TODO:: replace with LoansCategories length
-                investments : [{userId : users[Math.floor(Math.random() * users.length)]._id ,amount : investmentsAmount}]
+                investments : [{userId : users[Math.floor(Math.random() * users.length)]._id ,amount : investmentsAmount}],
+                createdAt : new Date()
             });
         }
     }

@@ -157,10 +157,11 @@ Loans.attachSchema(new SimpleSchema({
     categoryId : {
         type: Number,
         min: 0,
-        max: Object.keys(LoansCategories).length -1
+        max: Object.keys(LoansCategories).length -1,
+        defaultValue: 0
     },
     createdAt : {
         type : Date,
-        defaultValue : new Date()
+        denyUpdate: true
     }
 }));
