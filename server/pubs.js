@@ -22,7 +22,9 @@ Meteor.publish('loans', function() {
     return Loans.find();
 });
 
-Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, userId) {
+Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, q, userId) {
+    q = q || '';
+
     //Meteor._sleepForMs(1000);
     var positiveIntegerCheck = Match.Where(function(x) {
         check(x, Match.Integer);
@@ -31,7 +33,7 @@ Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, userI
 
     check(skipCount, positiveIntegerCheck);
 
-    var query = {};
+    var query = {title_sort : {$regex : q}};
     if (userId){
         query.userId = this.userId;
     } else {

@@ -20,6 +20,7 @@ Template.loansList.onCreated(function() {
             skipCount,
             Router.current().params.query.sortField,
             Router.current().params.query.sortDirection,
+            Router.current().params.query.q,
             userId
         );
     });
@@ -44,8 +45,6 @@ Template.loansList.helpers({
     prevPage: function() {
         var currentPage = currentLoansPage();
         var previousPage = currentPage === 1 ? 1 : currentPage - 1;
-        var sortField = Router.current().params.query.sortField;
-        var sortDirection = Router.current().params.query.sortDirection;
 
         var route;
         if (this.myLoansList){
@@ -54,17 +53,12 @@ Template.loansList.helpers({
             route = Router.routes.loans;
         }
 
-        var query = {query : {page: previousPage}};
-        if (sortField) query.query.sortField = sortField;
-        if (sortDirection) query.query.sortDirection = sortDirection;
-
-        return route.path({}, query);
+        var query = getQueryParams({page: previousPage});
+        return route.path({}, {query : query});
     },
     nextPage: function() {
         var currentPage = currentLoansPage();
         var nextPage = hasMorePages() ? currentPage + 1 : currentPage;
-        var sortField = Router.current().params.query.sortField;
-        var sortDirection = Router.current().params.query.sortDirection;
 
         //Router.current().route.getName()
         var route;
@@ -74,12 +68,8 @@ Template.loansList.helpers({
             route = Router.routes.loans;
         }
 
-        var query = {query : {page: nextPage}};
-        if (sortField) query.query.sortField = sortField;
-        if (sortDirection) query.query.sortDirection = sortDirection;
-
-
-        return route.path({}, query);
+        var query = getQueryParams({page: nextPage});
+        return route.path({}, {query : query});
     },
     prevPageClass: function() {
         return currentLoansPage() <= 1 ? "disabled" : "";
@@ -99,7 +89,6 @@ Template.loansList.events({
             sortDirection = 'asc';
         }
 
-
         var routeName;
         if (this.myLoansList){
             routeName = 'myLoans';
@@ -107,13 +96,48 @@ Template.loansList.events({
             routeName = 'loans';
         }
 
-        Router.go(routeName, {}, {query : {
-            page: Router.current().params.query.page,
-            sortField : sortField,
-            sortDirection : sortDirection
-        }});
+        var query = getQueryParams({sortField : sortField, sortDirection : sortDirection});
+        Router.go(routeName, {}, {query : query});
+    },
+    "keyup #search": function (event, tmp) {
+        var val = event.target.value.trim();
+        if (val.length >= 3 || val.length === 0){
+            val = val.toLowerCase();
+
+            var routeName;
+            if (this.myLoansList){
+                routeName = 'myLoans';
+            } else {
+                routeName = 'loans';
+            }
+
+            var query = getQueryParams({q : val, page : 1});
+            Router.go(routeName, {}, {query : query});
+        }
     }
 });
+
+var getQueryParams = function(params){
+    params = params || {};
+
+    var queryParams = {};
+
+    var page = Router.current().params.query.page;
+    var sortField = Router.current().params.query.sortField;
+    var sortDirection = Router.current().params.query.sortDirection;
+    var q = Router.current().params.query.q;
+
+    if (page) queryParams.page = page;
+    if (sortField) queryParams.sortField = sortField;
+    if (sortDirection) queryParams.sortDirection = sortDirection;
+    if (q) queryParams.q = q;
+
+    for (var key in params) {
+        queryParams[key] = params[key];
+    }
+
+    return queryParams;
+};
 
 var hasMorePages = function() {
     var currentPage = parseInt(Router.current().params.query.page) || 1;
