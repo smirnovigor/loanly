@@ -1,6 +1,11 @@
 <template name="navElem">
     <ul id="{{id}}" class="{{class}}">
         <li><a href="{{pathFor 'loanList'}}">Loans</a></li>
+
+        {{#if currentUser}}
+        <li><a href="{{pathFor 'myLoans'}}">My loans</a></li>
+        {{/if}}
+
         <li><a href="{{pathFor 'loan-form'}}">Create Loan</a></li>
         <li><a href="{{pathFor 'investment-list'}}">My Investments</a></li>
         <li><a href="{{pathFor 'auto-investment'}}">Auto Investment</a></li>
