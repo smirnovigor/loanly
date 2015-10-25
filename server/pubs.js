@@ -68,6 +68,12 @@ Meteor.publish('repayment-by-id', function(repaymentId) {
     return Repayments.find(repaymentId);
 });
 
+
+// ## notifications
+Meteor.publish('notifications', function() {
+    return Notifications.find({receiverId: this.userId});
+});
+
 // ## investments
 Meteor.publish('investments', function() {
     return Investments.find({investorId: this.userId});

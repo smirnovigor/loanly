@@ -143,7 +143,8 @@ Loans.attachSchema(new SimpleSchema({
     },
     investments: {
         type: [Object],
-        optional: true
+        optional: true,
+        defaultValue: []
     },
     "investments.$.userId": {
         type: String,

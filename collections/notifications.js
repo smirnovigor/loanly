@@ -27,5 +27,24 @@ Notifications.attachSchema(new SimpleSchema({
     },
     message: {
         type: String
+    },
+    createdAt: {
+        type: Date,
+        optional: true,
+        autoValue: function() {
+            if (this.isInsert) {
+                return new Date;
+            } else if (this.isUpsert) {
+                return {$setOnInsert: new Date};
+            } else {
+                this.unset();  // Prevent user from supplying their own value
+            }
+        }
+    },
+    status: {
+        type: String,
+        optional:true,
+        defaultValue: 'unread',
+        allowedValues: ['unread', 'read']
     }
 }));
