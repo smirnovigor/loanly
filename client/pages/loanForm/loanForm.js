@@ -11,6 +11,11 @@ Template.loanForm.events({
    "submit .new-loan": function(event){
        event.preventDefault();
 
+       var createdAt = new Date();
+
+       var endsAt = new Date();
+       endsAt.setMonth(endsAt.getMonth() + 2);
+
        var ctx = Loans.simpleSchema().namedContext("loanForm");
        var newLoan = {
            userId: Meteor.userId(),
@@ -21,7 +26,8 @@ Template.loanForm.events({
            period: parseInt(event.target.period.value),
            rate: parseInt(event.target.rate.value),
            categoryId : 0,
-           createdAt : new Date
+           createdAt : createdAt,
+           endsAt : endsAt
        };
 
        if(ctx.validate(newLoan)){

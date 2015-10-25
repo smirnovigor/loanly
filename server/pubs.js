@@ -9,10 +9,8 @@ var buildSortParams = function(sortField, sortDirection) {
     }
 
     var field = sortField || 'createdAt';
-    if (sortField === 'amount') {
-        field = 'amount';
-    } else if (sortField === 'rate') {
-        field = 'rate';
+    if (sortField === 'amount' || sortField === 'rate' || sortField === 'endsAt' || sortField === 'period' || sortField === 'userCredit') {
+        field = sortField;
     }
 
     sortParams[field] = direction;
@@ -24,7 +22,9 @@ Meteor.publish('loans', function() {
     return Loans.find();
 });
 
-Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, userId) {
+Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, q, userId) {
+    q = q || '';
+
     //Meteor._sleepForMs(1000);
     var positiveIntegerCheck = Match.Where(function(x) {
         check(x, Match.Integer);
@@ -33,7 +33,7 @@ Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, userI
 
     check(skipCount, positiveIntegerCheck);
 
-    var query = {};
+    var query = {title_sort : {$regex : q}};
     if (userId){
         query.userId = this.userId;
     } else {

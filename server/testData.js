@@ -17,6 +17,12 @@ loadTestData = function loadTestData() {
             var investmentsAmount = Math.floor(amount * (Math.random()*1));
             var rateBasedOnCreditRating = Number((1 + (1 - randomUser.userCreditRating) * 9).toFixed(2));
 
+            var createdAt = new Date();
+            createdAt.setDate(createdAt.getDate() + Math.floor(Math.random() * 30));
+
+            var endsAt = new Date();
+            endsAt.setMonth(endsAt.getMonth() + Math.floor(Math.random() * 3) + 1);
+
             Loans.insert({
                 userId: randomUser._id ,
                 userCreditRating: randomUser.userCreditRating,
@@ -27,7 +33,8 @@ loadTestData = function loadTestData() {
                 rate: rateBasedOnCreditRating,
                 categoryId : Number(Math.random() * 9).toFixed(), //TODO:: replace with LoansCategories length
                 investments : [{userId : users[Math.floor(Math.random() * users.length)]._id ,amount : investmentsAmount}],
-                createdAt : new Date()
+                createdAt : createdAt,
+                endsAt : endsAt
             });
         }
     }
