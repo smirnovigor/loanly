@@ -36,6 +36,11 @@ Investments.attachSchema(new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Id
     },
+    auto: {
+        type: Boolean,
+        optional: true,
+        defaultValue: false
+    },
     amount: {
         type: Number,
         min: 1,

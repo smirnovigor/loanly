@@ -57,19 +57,12 @@ var createInvestments = function(loans){
         var newInvestment = {
             investorId: Meteor.userId(),
             loanId: loan._id,
+            auto: true,
             amount: parseInt(loan.myPart),
             estimatedRepayment: calculateRepayment(loan)
         };
 
-        Investments.insert(newInvestment);
-
-        var updateObject = {$push: {investments: {userId: Meteor.userId(), amount:loan.myPart}}};
-
-        if(loan.investmentTotalAmount + loan.myPart >= loan.amount){
-            updateObject.$set =  {status: 'active'};
-        }
-
-        Loans.update(loan._id, updateObject);
+        Investments.insert(newInvestment); // check investment insert hook in server/observers.js
     }
 };
 

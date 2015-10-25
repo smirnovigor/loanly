@@ -26,8 +26,7 @@ Template.investmentForm.events({
        };
 
        if(ctx.validate(newInvestment)){
-           Investments.insert(newInvestment);
-           Loans.update(this.loan._id, { $push: {investments : { userId: Meteor.userId(), amount:parseInt(event.target.amount.value)}}});
+           Investments.insert(newInvestment);// check investment insert hook in server/observers.js
 
            if (this.onSuccess){
                this.onSuccess();
