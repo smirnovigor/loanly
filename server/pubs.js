@@ -46,7 +46,7 @@ Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, userI
 
     var sortParams = buildSortParams(sortField, sortDirection);
 
-    console.log(sortParams);
+    //console.log(sortParams);
 
     return Loans.find(query, {
         limit: parseInt(Meteor.settings.public.recordsPerPage), // records to show per page
