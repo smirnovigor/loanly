@@ -15,7 +15,10 @@
             <div class="col s12 m6 l3">
                 <label>{{_ "Sort by"}}</label>
                 <select class="browser-default sort-option">
-                    <option value="" disabled {{selected}}>{{_ "Choose your sort option"}}</option>
+                    <option value="createdAt" {{selected "createdAt"}}>{{_ "Created at date"}}</option>
+                    <option value="endsAt" {{selected "endsAt"}}>{{_ "Ends at date"}}</option>
+                    <option value="period" {{selected "period"}}>{{_ "Short period"}}</option>
+                    <option value="userCredit" {{selected "userCredit"}}>{{_ "User credit"}}</option>
                     <option value="rate" {{selected "rate"}}>{{_ "High rate"}}</option>
                     <option value="amount" {{selected "amount"}}>{{_ "Low amount"}}</option>
                     <!--<option value="endsAt">{{_ "Nearing completion"}}</option>-->

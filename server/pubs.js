@@ -9,10 +9,8 @@ var buildSortParams = function(sortField, sortDirection) {
     }
 
     var field = sortField || 'createdAt';
-    if (sortField === 'amount') {
-        field = 'amount';
-    } else if (sortField === 'rate') {
-        field = 'rate';
+    if (sortField === 'amount' || sortField === 'rate' || sortField === 'endsAt' || sortField === 'period' || sortField === 'userCredit') {
+        field = sortField;
     }
 
     sortParams[field] = direction;

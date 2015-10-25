@@ -49,11 +49,6 @@ Loans.allow({
         fundedPercentage: function() {
             return Math.floor((funded.bind(this)() / this.amount) * 100);
         },
-        endsAt : function(){
-            var d = new Date(this.createdAt);
-            d.setMonth(d.getMonth() + this.period);
-            return d;
-        },
         image : function(){
             var url = 'http://loremflickr.com/600/300/';
 
@@ -162,6 +157,10 @@ Loans.attachSchema(new SimpleSchema({
     },
     createdAt : {
         type : Date,
+        denyUpdate: true
+    },
+    endsAt: {
+        type: Date,
         denyUpdate: true
     }
 }));
