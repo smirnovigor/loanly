@@ -1,37 +1,116 @@
 <template name="userprofileEdit">
-  <div class="container">
-      <div class="row">
-         <h1>{{userId}}---here</h1>
-          <form class="col s12">
-              <div class="row">
-                  <div class="input-field col s6">
-                      <input  id="first_name" type="text" class="validate">
-                      <label for="first_name">First Name</label>
-                  </div>
-                  <div class="input-field col s6">
-                      <input id="last_name" type="text" class="validate">
-                      <label for="last_name">Last Name</label>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="input-field col s12">
-                      <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-                      <label for="disabled">Disabled</label>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="input-field col s12">
-                      <input id="password" type="password" class="validate">
-                      <label for="password">Password</label>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="input-field col s12">
-                      <input id="email" type="email" class="validate">
-                      <label for="email">Email</label>
-                  </div>
-              </div>
-          </form>
-      </div>
-  </div>
+    <div class="container">
+        <div class="row">
+            <h1>{{userId}}---here</h1>
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input  id="nickname" type="text" class="validate">
+                        <label for="nickname">{{_ "nickname"}}</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input  id="first_name" type="text" class="validate">
+                        <label for="first_name">{{_ "first_name"}}</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input  id="last_name" type="text" class="validate">
+                        <label for="last_name">{{_ "last_name"}}</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <p>
+                            <label>{{_ "gender"}}</label>
+                        </p>
+                        <p style="padding-top:20px;">
+                            <input name="gender" type="radio" id="Female" />
+                            <label for="Female">{{_ "Female"}}</label>
+                        </p>
+                        <p>
+                            <input name="gender" type="radio" id="Male" />
+                            <label for="Male">{{_ "Male"}}</label>
+                        </p>
+
+
+                    </div>
+                </div>
+                <!--<div class="col s12">-->
+                    <!--<div class="col s6">-->
+                        <!--<input  id="tel" type="text" class="validate">-->
+                    <!--</div>-->
+                    <!--<div class="col s2">-->
+                        <!--<label>Browser Select</label>-->
+                        <!--<select class="browser-default">-->
+                            <!--<option value="" disabled selected>Choose your option</option>-->
+                            <!--<option value="1">052</option>-->
+                            <!--<option value="2">054</option>-->
+                            <!--<option value="3">055</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="input-field col s12">
+                    <input  id="mail" type="text" class="validate">
+                    <label for="mail">{{_ "mail"}}</label>
+                </div>
+                <div class="input-field col s12">
+                    <input  id="national_id" type="text" class="validate">
+                    <label for="national_id">{{_ "national_id"}}</label>
+                </div>
+                <div class="input-field col s12">
+                    <input  id="city" type="text" class="validate">
+                    <label for="city">{{_ "city"}}</label>
+                </div>
+                <div class="input-field col s12">
+                    <input  id="street" type="text" class="validate">
+                    <label for="street">{{_ "street"}}</label>
+                </div>
+                <div class="input-field col s12">
+                    <input  id="hause_number" type="text" class="validate">
+                    <label for="hause_number">{{_ "hause_number"}}</label>
+                </div>
+                <div class="input-field col s12">
+                    <input  id="apartment_number" type="text" class="validate">
+                    <label for="apartment_number">{{_ "apartment_number"}}</label>
+                </div>
+                <!--<div class="col s12">-->
+                    <!--<div class="col s2">-->
+                        <!--<label>Day</label>-->
+                        <!--<select class="browser-default">-->
+                            <!--<option value="" disabled selected>Choose your option</option>-->
+                            <!--<option value="1">052</option>-->
+                            <!--<option value="2">054</option>-->
+                            <!--<option value="3">055</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="col s2">-->
+                        <!--<label>Month</label>-->
+                        <!--<select class="browser-default">-->
+                            <!--<option value="" disabled selected>Choose your option</option>-->
+                            <!--<option value="1">052</option>-->
+                            <!--<option value="2">054</option>-->
+                            <!--<option value="3">055</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="col s2">-->
+                        <!--<label>Year</label>-->
+                        <!--<select class="browser-default">-->
+                            <!--<option value="" disabled selected>Choose your option</option>-->
+                            <!--<option value="1">052</option>-->
+                            <!--<option value="2">054</option>-->
+                            <!--<option value="3">055</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="input-field col s12">-->
+                    <!--<div class="col s2">-->
+                        <!--<label class="col s4">marital_status</label>-->
+                        <!--<select class="browser-default">-->
+                            <!--<option value="" disabled selected>Choose your option</option>-->
+                            <!--<option value="1">052</option>-->
+                            <!--<option value="2">054</option>-->
+                            <!--<option value="3">055</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </form>
+        </div>
+    </div>
 </template>
