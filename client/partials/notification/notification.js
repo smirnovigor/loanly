@@ -4,7 +4,8 @@ Template.notification.onCreated(function(){
     Notifications.find({status: 'unread'}).observeChanges({
         added: function(id, document){
             if(isLoaded){
-                console.log('notification is added', document.message)
+                Materialize.toast(document.message, 5000);
+                console.log('notification is added', document.message);
             }
         }
     });

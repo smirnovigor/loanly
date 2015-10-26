@@ -41,10 +41,10 @@ class InvestmentObserver {
             var investors = _.pluck(loan.investments, 'userId');
             investors.push(investment.investorId);
 
-            this.createNotification(investors, 'Your invested loan [' + loan.title + '](' + loan._id + ') is active now!');
+            this.createNotification(investors, 'Your invested loan ' + loan.title + ' is active now');
 
             // notify loaner about his loan state change
-            this.createNotification(loan.userId, 'Your loan [' + loan.title + '](' + loan._id + ') is active now!');
+            this.createNotification(loan.userId, 'Your loan ' + loan.title + ' is active now');
 
             updateObject.$set =  {status: 'active'};
         }
