@@ -34,6 +34,10 @@ Schema.UserProfile = new SimpleSchema({
         regEx: /^[a-z0-9A-z .]{3,30}$/,
         optional: true
     },
+    accountId : {
+        type: String,
+        optional: true
+    },
     lang: {
         type: String,
         allowedValues: ['en', 'he'],

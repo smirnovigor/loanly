@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <h1>{{userId}}---here</h1>
-            <form class="col s12">
+            <form class="col s12"  enctype="multipart/form-data">
                 <div class="row">
                     <div class="input-field col s12">
                         <input  id="nickname" type="text" class="validate">
@@ -69,6 +69,20 @@
                 <div class="input-field col s12">
                     <input  id="apartment_number" type="text" class="validate">
                     <label for="apartment_number">{{_ "apartment_number"}}</label>
+                </div>
+                <div class="input-field col s12">
+                    <input type="file" class="jqDropZone" data-form-data='{{ submitData }}'>
+                    {{#with infoLabel}}
+                    {{ infoLabel}} <button class="start">StartUpload</button>
+                    <div style="width: 200px; height: 30px; border: 1px solid black">
+                        <div style="background: red; height: 30px; width: {{ progress }}">
+                            {{ progress }}
+                        </div>
+                    </div>
+                    {{/with}}
+                </div>
+                <div>
+                    <a  class="waves-effect waves-light btn submit-btn">Save</a>
                 </div>
                 <!--<div class="col s12">-->
                     <!--<div class="col s2">-->

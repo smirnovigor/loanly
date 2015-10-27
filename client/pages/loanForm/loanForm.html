@@ -1,44 +1,46 @@
 <template name="loanForm">
     <div class="container">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <h2 class="header">Create Loan ({{random.value}})</h2>
+        <div class="center">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <h2 class="header">Create Loan ({{random.value}})</h2>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <a href="{{pathFor 'loan-list'}}" class="waves-effect waves-light btn">Back to loans</a>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <form class="new-loan">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="title" type="text" class="validate" maxlength="15" name="title" required>
-                            <label for="title">Title</label>
+            <div class="row">
+                <a href="{{pathFor 'loan-list'}}" class="waves-effect waves-light btn">Back to loans</a>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <form class="new-loan">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="title" type="text" class="validate" maxlength="15" name="title" required>
+                                <label for="title">Title</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="description" class="materialize-textarea validate" name="description" required></textarea>
-                            <label for="description">Description</label>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="description" class="materialize-textarea validate" name="description" required></textarea>
+                                <label for="description">Description</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 m6 l4">
-                            <input id="amount" type="number" class="validate" name="amount" required>
-                            <label for="amount">Amount</label>
+                        <div class="row">
+                            <div class="input-field col s12 m6 l4">
+                                <input id="amount" type="number" class="validate" name="amount" required>
+                                <label for="amount">Amount</label>
+                            </div>
+                            <div class="input-field col s12 m6 l4">
+                                <input id="period" type="number" placeholder="Number of month" class="validate" name="period" min="3" max="36" required>
+                                <label for="period" class="active" data-error="wrong" data-success="right">Period</label>
+                            </div>
+                            <div class="input-field col s12 m6 l4">
+                                <input id="rate" type="number" class="validate" name="rate" required>
+                                <label for="rate">Rate</label>
+                            </div>
                         </div>
-                        <div class="input-field col s12 m6 l4">
-                            <input id="period" type="number" placeholder="Number of month" class="validate" name="period" min="3" max="36" required>
-                            <label for="period" class="active" data-error="wrong" data-success="right">Period</label>
-                        </div>
-                        <div class="input-field col s12 m6 l4">
-                            <input id="rate" type="number" class="validate" name="rate" required>
-                            <label for="rate">Rate</label>
-                        </div>
-                    </div>
-                    <button type="submit" class="waves-effect waves-light btn">Create</button>
-                </form>
+                        <button type="submit" class="waves-effect waves-light btn">Create</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
