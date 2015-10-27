@@ -19,8 +19,6 @@ var calculateUserCreditRating = function(userId, accountNumber){
                     userCreditRating = Number(balance / upBorder).toFixed(3);
             }
 
-            console.log('userCreditRating', userCreditRating);
-
             Meteor.users.update({_id: userId}, {$set: {userCreditRating: userCreditRating}});
         }
         else{
@@ -116,7 +114,7 @@ Meteor.users.attachSchema(new SimpleSchema({
                 calculateUserCreditRating(this.docId, this.field('profile').value.accountId);
 
                 //return default value and calculate the new one based on bank API
-                return 0;
+                return  Number(Math.random().toFixed(3));
             }
         }
     },
