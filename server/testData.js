@@ -4,7 +4,10 @@ loadTestData = function loadTestData() {
         for (var i = 0; i < 50; i++) {
             Meteor.users.insert({
                 username: Fake.sentence(1),
-                createdAt: new Date()
+                createdAt: new Date(),
+                profile: {
+                    accountId: 29168
+                }
             });
         }
     }

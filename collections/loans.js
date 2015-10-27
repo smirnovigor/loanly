@@ -91,8 +91,8 @@ Loans.attachSchema(new SimpleSchema({
     userCreditRating: {
         type: Number,
         decimal: true,
-        min: 0.001,
-        max: 0.999
+        min: 0,
+        max: 1
     },
     title: {
         type: String,

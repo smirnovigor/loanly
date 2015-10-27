@@ -1,5 +1,7 @@
 {
-    "Loanly" : "ההלוואות שלי",
+    "Loans list" : "רשימת הלוואות",
+    "Create Loan" : "צור הלוואה",
+    "Loanly" : "לונלי",
     "Loans requests" : "רשימת בקשות להלוואה",
 
     "loan for other purposes" : "הלוואה למטרה אחרת",
@@ -29,7 +31,7 @@
     "Ends at date" : "תאריך סיום",
     "Short period" : "תקופה קצרה",
     "User credit" : "קרדיט המשתמש",
-    "High rate" : "צואה גבוהה",
+    "High rate" : "תשואה גבוהה",
     "Low amount" : "סכום נמוך",
     "Nearing completion" : "קרוב לסיום",
 
@@ -69,4 +71,50 @@
     "minimum calculated return rate": "ריבית מינימלית",
     "add maximum return rate": "הכנס ריבית מקסימלית",
     "Description": "פרטים נוספים"
+    "hause_number" : "מספר בית",
+
+    "Give loan" : "תן הלוואה",
+    "Take loan" : "קח הלוואה",
+    "Borrow at attractive interest rates" : "קח הלוואה בריבית אטרקטיבית",
+    "From %s annual interest" : "מ- %s ריבית שנתית",
+    "The loan amount ?" : "סכום ההלוואה?",
+    "A few months ?" : "לכמה חודשים?",
+    "The loan amount ?" : "סכום ההלוואה?",
+    "minYear" : 1,
+    "maxYear" : 3,
+    "yearStep" : 1,
+
+    "Lend and enjoy attractive interest" : "תן הלוואה ותיהנה מריבית אטרקטיבית",
+    "Apply for a loan" : "הגש בקשה להלוואה",
+    "Subscribe to give loan" : "הירשם ותן הלוואה",
+    "Annual interest" : "ריבית שנתית",
+    "around" : "כ",
+    "nihul_malvim" : "ניהול מלווים",
+    "heshbon": "חשבון משתמש",
+    "nihul_mishtamesh" : "ניהול משתמש",
+    "transfer_to_bank": "העבר לחשבון הבנק",
+    "balace": "יתרה",
+   
+
+    "Search" : "חיפוש",
+    "Write loan name" : "הזן את שם ההלוואה",
+
+    "Auto Investment" : "השקעה אוטומטית",
+
+    "Amount" : "סכום",
+    "Risk" : "סיכון",
+    "Computed Profit" : "רווח מחושב",
+    "Computed Rate" : "ריבית מחושבת",
+    "Auto Investment For Repayment" : "המשך להשקיע את היתרה המצטברת",
+
+    "Title" : "כותרת",
+    "Rate" : "ריבית",
+    "User Credit Rating" : "דירוש אשראי לקוח",
+    "My part" : "החלק שלי",
+    "Investment Total Amount" : "כמה הושקע?",
+
+    "Accept" : "בצע",
+
+    "Made by" : "נעשה ע\"י",
+    "New Bank Site Developing Team" : "צוות פיתוח אתר חדש"
 }

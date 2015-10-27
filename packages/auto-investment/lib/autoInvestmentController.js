@@ -52,6 +52,7 @@ AutoInvestment = class AutoInvestment {
             {$unwind: '$investments'},
             {$group: {
                     _id: '$_id',
+                    title : {$first: "$title"},
                     rate: {$first: "$rate"},
                     amount: {$first: "$amount"},
                     status: {$first: "$status"},
@@ -62,6 +63,7 @@ AutoInvestment = class AutoInvestment {
             },
             {$project: { // calculate investmentTotalAndMyPart
                     _id: 1,
+                    title : 1,
                     rate: 1,
                     amount: 1,
                     status: 1,
@@ -73,6 +75,7 @@ AutoInvestment = class AutoInvestment {
             },
             {$project: { // compare calculated investmentTotalAndMyPart and amount
                     _id: 1,
+                    title : 1,
                     rate: 1,
                     amount: 1,
                     status: 1,
