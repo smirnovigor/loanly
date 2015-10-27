@@ -7,9 +7,7 @@ Template.loanForm.helpers({
         return Random.findOne();
     },
     minimumrate: function(){
-        var userCreditRating = Meteor.user().userCreditRating;
-        var minimumRate = 100 - ((1 - userCreditRating)*100);
-        return minimumRate.toFixed(2);
+        return calculateMinRate();
     },
     amount : function(){
         if(Router.current().params.query.amount){
@@ -28,26 +26,34 @@ Template.loanForm.helpers({
         }
         return Session.get('period');
     },
-    monthlyReturn: function(){
-        var calcMonthlyReturn = Session.get('amount')/Session.get('period');
-        var monthlyReturn = calcMonthlyReturn.toFixed(2);
-        Session.set('monthlyReturn', monthlyReturn)
-        return Session.get('monthlyReturn');
+    rate : function(){
+        if(!Session.get('rate')){
+            Session.set('rate', calculateMinRate());
+        }
+        return Session.get('rate');
     },
-    minimumRate: function(){
+    monthlyReturn: function(){
+        var rate = Session.get('rate') / 100;
+        var amount = Session.get('amount');
+        var period = Session.get('period');
 
+        var calcMonthlyReturn = (amount / period) + (amount / period) * rate;
+        var monthlyReturn = calcMonthlyReturn.toFixed(2);
+        return monthlyReturn;
     }
 });
 
 Template.loanForm.events({
 
-    "change [type=range]": function(event, tmp){
+    "input [type=range]": function(event, tmp){
         if(event.target.name === 'amount'){
             Router.current().params.query.amount = false;
             Session.set('amount', event.target.value);
         } else if (event.target.name === 'period') {
             Router.current().params.query.year = false;
             Session.set('period', event.target.value);
+        } else if (event.target.name === 'rate') {
+            Session.set('rate', event.target.value);
         }
     },
    "submit .new-loan": function(event){
@@ -66,7 +72,7 @@ Template.loanForm.events({
            description: event.target.description.value,
            amount: parseInt(Session.get('amount')),
            period: parseInt(Session.get('period')),
-           rate: parseInt(event.target.rate.value),
+           rate: parseInt(Session.get('rate')),
            categoryId : 0,
            createdAt : createdAt,
            endsAt : endsAt
@@ -90,3 +96,12 @@ Template.loanForm.events({
        }
     }
 });
+
+var calculateMinRate = function(){
+    var userCreditRating = Meteor.user().userCreditRating;
+    var minRate = 1;
+    var maxRate = 10;
+
+    var minimumRate = (1 - userCreditRating) * (maxRate - minRate) + minRate;
+    return minimumRate.toFixed(2);
+};

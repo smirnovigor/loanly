@@ -70,17 +70,26 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12 m12 l12">
-                            <div class="input-field col s6 m6 l4">
-                                <i class="material-icons">star</i>
-                                {{_"minimum calculated return rate"}} {{minimumrate}}%
-                            </div>
-                            <div class="input-field col s6 m6 l2">
-                                <label for="rate">{{_"add maximum return rate"}}</label>
-                                <input id="rate" type="number" class="validate" name="rate" step="0.1" min="{{minimumrate}}" max="10" required>
-                            </div>
+                        <div class="input-field col s12 m12 l6">
+                            <p><label class="lable" for="period">{{_"rate"}}</label></p>
+                            <p class="range-field">
+                                <output for="rateId" name="rate" class="range-value">{{rate}}</output>
+                                <input type="range" name="rate" id="rateId" min="{{minimumrate}}" max="20" step="0.1" value="{{minimumrate}}"/>
+                            </p>
                         </div>
                     </div>
+                    <!--<div class="row">-->
+                        <!--<div class="col s12 m12 l12">-->
+                            <!--<div class="input-field col s6 m6 l4">-->
+                                <!--<i class="material-icons">star</i>-->
+                                <!--{{_"minimum calculated return rate"}} {{minimumrate}}%-->
+                            <!--</div>-->
+                            <!--<div class="input-field col s6 m6 l2">-->
+                                <!--<label for="rate">{{_"add maximum return rate"}}</label>-->
+                                <!--<input id="rate" type="number" class="validate" name="rate" step="0.1" min="{{minimumrate}}" max="10" required>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                     <button type="submit" class="waves-effect waves-light btn">Create</button>
                 </form>
             </div>
