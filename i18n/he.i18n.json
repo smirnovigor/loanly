@@ -124,5 +124,8 @@
     "Estimated repayment" : "פירעון משוער",
     "Interest" : "ריבית",
 
-    "Finished" : "הסתיים"
+    "Finished" : "הסתיים",
+    "Back to loans" : "חזור לרשימת הלוואות",
+    "Current Fundraising" : "מימון נוכחי",
+    "You currently have lent to this loan" : "כבר לווית"
 }

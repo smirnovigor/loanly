@@ -65,7 +65,7 @@
     right: 10px;
   }
 
-  [type="checkbox"]:not(:checked), [type="checkbox"]:checked{
+  [type="checkbox"]:not(:checked), [type="checkbox"]:checked, [type="radio"]:not(:checked), [type="radio"]:checked{
     left: auto;
     right: -9999px;
   }
@@ -133,5 +133,10 @@
   //pagination
   .pagination li{
     float: right;
+  }
+
+  //tabs
+  .tabs .tab{
+    float: left;
   }
 }
