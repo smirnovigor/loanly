@@ -1,5 +1,7 @@
 {
-    "Loanly" : "ההלוואות שלי",
+    "Loans list" : "רשימת הלוואות",
+    "Create Loan" : "צור הלוואה",
+    "Loanly" : "לונלי",
     "Loans requests" : "רשימת בקשות להלוואה",
 
     "loan for other purposes" : "הלוואה למטרה אחרת",
@@ -58,7 +60,7 @@
     "Borrow at attractive interest rates" : "קח הלוואה בריבית אטרקטיבית",
     "From %s annual interest" : "מ- %s ריבית שנתית",
     "The loan amount ?" : "סכום ההלוואה?",
-    "A few years ?" : "לכמה שנים?",
+    "A few months ?" : "לכמה חודשים?",
     "The loan amount ?" : "סכום ההלוואה?",
     "minYear" : 1,
     "maxYear" : 3,
