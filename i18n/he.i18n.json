@@ -1,7 +1,5 @@
 {
-    "Loans list" : "רשימת הלוואות",
-    "Create Loan" : "צור הלוואה",
-    "Loanly" : "לונלי",
+    "Loanly" : "ההלוואות שלי",
     "Loans requests" : "רשימת בקשות להלוואה",
 
     "loan for other purposes" : "הלוואה למטרה אחרת",
@@ -60,14 +58,23 @@
     "Borrow at attractive interest rates" : "קח הלוואה בריבית אטרקטיבית",
     "From %s annual interest" : "מ- %s ריבית שנתית",
     "The loan amount ?" : "סכום ההלוואה?",
-    "A few months ?" : "לכמה חודשים?",
+    "A few years ?" : "לכמה שנים?",
     "The loan amount ?" : "סכום ההלוואה?",
+    "minYear" : 1,
+    "maxYear" : 3,
+    "yearStep" : 1,
 
     "Lend and enjoy attractive interest" : "תן הלוואה ותיהנה מריבית אטרקטיבית",
     "Apply for a loan" : "הגש בקשה להלוואה",
     "Subscribe to give loan" : "הירשם ותן הלוואה",
     "Annual interest" : "ריבית שנתית",
     "around" : "כ",
+    "nihul_malvim" : "ניהול מלווים",
+    "heshbon": "חשבון משתמש",
+    "nihul_mishtamesh" : "ניהול משתמש",
+    "transfer_to_bank": "העבר לחשבון הבנק",
+    "balace": "יתרה",
+   
 
     "Search" : "חיפוש",
     "Write loan name" : "הזן את שם ההלוואה",

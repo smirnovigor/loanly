@@ -1,31 +1,262 @@
 <template name="userprofile">
     <div class="container">
         <div class="row">
-            <div class="col s12 m12 l12">
-                <h2 class="header">User Profile</h2>
+            <div class="col s12" style="padding-top:20px;">
+                <ul class="tabs">
+                    <li class="tab col s3"><a href="#profile">{{_ "nihul_mishtamesh"}}</a></li>
+                    <li class="tab col s3"><a href="#heshbon">{{_ "heshbon"}}</a></li>
+                    <li class="tab col s3"><a href="#nihul_malvim">{{_ "nihul_malvim"}}</a></li>
+                </ul>
             </div>
-        </div>
-        <div class="row">
-            <a href="{{pathFor 'loan-list'}}" class="waves-effect waves-light btn">Back to loans</a>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <p>
-                    <span>id:</span>
-                    {{_id}}
-                </p>
-                <p>
-                    <span>Username:</span>
-                    {{username}}
-                </p>
-                <p>
-                    <span>Credit Rating:</span>
-                    {{userCreditRatingStr}}
-                </p>
+            <div id="profile" class="col s12">
+                <form class="col s12"  enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input  id="nickname" type="text" class="validate">
+                            <label for="nickname">{{_ "nickname"}}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input  id="first_name" type="text" class="validate">
+                            <label for="first_name">{{_ "first_name"}}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input  id="last_name" type="text" class="validate">
+                            <label for="last_name">{{_ "last_name"}}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <p>
+                                <label>{{_ "gender"}}</label>
+                            </p>
+                            <p style="padding-top:20px;">
+                                <input name="gender" type="radio" id="Female" />
+                                <label for="Female">{{_ "Female"}}</label>
+                            </p>
+                            <p>
+                                <input name="gender" type="radio" id="Male" />
+                                <label for="Male">{{_ "Male"}}</label>
+                            </p>
+
+
+                        </div>
+                    </div>
+                    <!--<div class="col s12">-->
+                    <!--<div class="col s6">-->
+                    <!--<input  id="tel" type="text" class="validate">-->
+                    <!--</div>-->
+                    <!--<div class="col s2">-->
+                    <!--<label>Browser Select</label>-->
+                    <!--<select class="browser-default">-->
+                    <!--<option value="" disabled selected>Choose your option</option>-->
+                    <!--<option value="1">052</option>-->
+                    <!--<option value="2">054</option>-->
+                    <!--<option value="3">055</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <div class="input-field col s12">
+                        <input  id="mail" type="text" class="validate">
+                        <label for="mail">{{_ "mail"}}</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input  id="national_id" type="text" class="validate">
+                        <label for="national_id">{{_ "national_id"}}</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input  id="city" type="text" class="validate">
+                        <label for="city">{{_ "city"}}</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input  id="street" type="text" class="validate">
+                        <label for="street">{{_ "street"}}</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input  id="hause_number" type="text" class="validate">
+                        <label for="hause_number">{{_ "hause_number"}}</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input  id="apartment_number" type="text" class="validate">
+                        <label for="apartment_number">{{_ "apartment_number"}}</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="file" class="jqDropZone" data-form-data='{{ submitData }}'>
+                        {{#with infoLabel}}
+                        {{ infoLabel}} <button class="start">StartUpload</button>
+                        <div style="width: 200px; height: 30px; border: 1px solid black">
+                            <div style="background: red; height: 30px; width: {{ progress }}">
+                                {{ progress }}
+                            </div>
+                        </div>
+                        {{/with}}
+                    </div>
+                    <div>
+                        <a  class="waves-effect waves-light btn submit-btn">Save</a>
+                    </div>
+                    <!--<div class="col s12">-->
+                    <!--<div class="col s2">-->
+                    <!--<label>Day</label>-->
+                    <!--<select class="browser-default">-->
+                    <!--<option value="" disabled selected>Choose your option</option>-->
+                    <!--<option value="1">052</option>-->
+                    <!--<option value="2">054</option>-->
+                    <!--<option value="3">055</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="col s2">-->
+                    <!--<label>Month</label>-->
+                    <!--<select class="browser-default">-->
+                    <!--<option value="" disabled selected>Choose your option</option>-->
+                    <!--<option value="1">052</option>-->
+                    <!--<option value="2">054</option>-->
+                    <!--<option value="3">055</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="col s2">-->
+                    <!--<label>Year</label>-->
+                    <!--<select class="browser-default">-->
+                    <!--<option value="" disabled selected>Choose your option</option>-->
+                    <!--<option value="1">052</option>-->
+                    <!--<option value="2">054</option>-->
+                    <!--<option value="3">055</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="input-field col s12">-->
+                    <!--<div class="col s2">-->
+                    <!--<label class="col s4">marital_status</label>-->
+                    <!--<select class="browser-default">-->
+                    <!--<option value="" disabled selected>Choose your option</option>-->
+                    <!--<option value="1">052</option>-->
+                    <!--<option value="2">054</option>-->
+                    <!--<option value="3">055</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </form>
             </div>
-        </div>
-        <div>
-            <a href="{{pathFor 'userprofile-edit'}}" class="waves-effect waves-light btn">Edit</a>
+            <div id="heshbon" class="col s12">
+                <div class="col s12">
+                    <div class="input-field col s12">
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <span class="card-title">{{_ "balace"}}:</span>
+                                        <p> 17,234 ₪</p>
+                                    </div>
+                                    <div class="card-action center">
+                                        <a href="#">{{_ "transfer_to_bank"}}</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="nihul_malvim" class="col s12">
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Waiting</div>
+                        <div class="collapsible-body">
+                            <div class="s10">
+                                <table class="centered">
+                                    <thead>
+                                    <tr>
+                                        <th>Loan id</th>
+                                        <th>Created at</th>
+                                        <th>Amount</th>
+                                        <th>Estimated Repayment</th>
+                                        <th>Current Repayment</th>
+                                        <th>Status</th>
+                                        <th>Auto Investment</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {{#each loansWaiting}}
+                                    <tr class="card hoverable card-content">
+                                        <td><a href="{{pathFor 'loan-details' _id=loanId}}">{{loanId}}</a></td>
+                                        <td>{{dateFilter createdAt 'DD.MM.YYYY'}}</td>
+                                        <td>{{money amount}}</td>
+                                        <td>{{money estimatedRepayment}}</td>
+                                        <td>{{money currentRepayment}}</td>
+                                        <td>{{status}}</td>
+                                        <td>{{auto}}</td>
+                                    </tr>
+                                    {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">place</i>Finished</div>
+                        <div class="collapsible-body">
+                            <div class="s10">
+                                <table class="centered">
+                                    <thead>
+                                    <tr>
+                                        <th>Loan id</th>
+                                        <th>Created at</th>
+                                        <th>Amount</th>
+                                        <th>Estimated Repayment</th>
+                                        <th>Current Repayment</th>
+                                        <th>Status</th>
+                                        <th>Auto Investment</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {{#each loansFinished}}
+                                    <tr class="card hoverable card-content">
+                                        <td><a href="{{pathFor 'loan-details' _id=loanId}}">{{loanId}}</a></td>
+                                        <td>{{dateFilter createdAt 'DD.MM.YYYY'}}</td>
+                                        <td>{{money amount}}</td>
+                                        <td>{{money estimatedRepayment}}</td>
+                                        <td>{{money currentRepayment}}</td>
+                                        <td>{{status}}</td>
+                                        <td>{{auto}}</td>
+                                    </tr>
+                                    {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Active</div>
+                        <div class="collapsible-body">
+                            <div class="s10">
+                                <table class="centered">
+                                    <thead>
+                                    <tr>
+                                        <th>Loan id</th>
+                                        <th>Created at</th>
+                                        <th>Amount</th>
+                                        <th>Estimated Repayment</th>
+                                        <th>Current Repayment</th>
+                                        <th>Status</th>
+                                        <th>Auto Investment</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {{#each loansActive}}
+                                    <tr class="card hoverable card-content">
+                                        <td><a href="{{pathFor 'loan-details' _id=loanId}}">{{loanId}}</a></td>
+                                        <td>{{dateFilter createdAt 'DD.MM.YYYY'}}</td>
+                                        <td>{{money amount}}</td>
+                                        <td>{{money estimatedRepayment}}</td>
+                                        <td>{{money currentRepayment}}</td>
+                                        <td>{{status}}</td>
+                                        <td>{{auto}}</td>
+                                    </tr>
+                                    {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </div>
 </template>
