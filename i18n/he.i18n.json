@@ -1,5 +1,7 @@
 {
-    "Loanly" : "ההלוואות שלי",
+    "Loans list" : "רשימת הלוואות",
+    "Create Loan" : "צור הלוואה",
+    "Loanly" : "לונלי",
     "Loans requests" : "רשימת בקשות להלוואה",
 
     "loan for other purposes" : "הלוואה למטרה אחרת",
@@ -68,6 +70,10 @@
     "Apply for a loan" : "הגש בקשה להלוואה",
     "Subscribe to give loan" : "הירשם ותן הלוואה",
     "Annual interest" : "ריבית שנתית",
-    "around" : "כ"
+    "around" : "כ",
+
+    "Search" : "חיפוש",
+    "Write loan name" : "הזן את שם ההלוואה"
+
 
 }

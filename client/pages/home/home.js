@@ -36,21 +36,9 @@ Template.home.helpers({
     },
     createLoanQueryParams : function(){
         return {year : Template.instance().yearRV.get(), amount : Template.instance().amountRV.get()};
-    }
-});
-
-Template.home.events({
-    'change #amount-rage' : function(e, template){
-        template.amountRV.set(e.target.value);
     },
-    'change #year-rage' : function(e, template){
-        template.yearRV.set(e.target.value);
-    }
-});
-
-//investRatePie
-Template.home.investRatePie = function() {
-    return {
+    investRatePie : function(){
+        return {
             title : false,
             tooltip : false,
             chart: {
@@ -75,5 +63,15 @@ Template.home.investRatePie = function() {
                 }
             }]
 
-    };
-};
+        };
+    }
+});
+
+Template.home.events({
+    'change #amount-rage' : function(e, template){
+        template.amountRV.set(e.target.value);
+    },
+    'change #year-rage' : function(e, template){
+        template.yearRV.set(e.target.value);
+    }
+});
