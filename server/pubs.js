@@ -39,8 +39,6 @@ Meteor.publish('loans', function(userId, status) {
     if (userId) query.userId = userId;
     if (status) query.status = status;
 
-    console.log('query', query);
-
     return Loans.find(query);
 });
 
@@ -60,6 +58,7 @@ Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, q, us
         query.userId = this.userId;
     } else {
         query.userId = {$ne : this.userId};
+        query.status = 'active';
     }
 
     Counts.publish(this, 'loansCount', Loans.find(query), {
