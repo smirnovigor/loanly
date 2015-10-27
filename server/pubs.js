@@ -19,8 +19,15 @@ var buildSortParams = function(sortField, sortDirection) {
     return sortParams;
 };
 
-Meteor.publish('loans', function() {
-    return Loans.find();
+Meteor.publish('loans', function(userId, status) {
+    var query = {};
+
+    if (userId) query.userId = userId;
+    if (status) query.status = status;
+
+    console.log('query', query);
+
+    return Loans.find(query);
 });
 
 Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, q, userId) {
