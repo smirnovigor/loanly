@@ -1,3 +1,33 @@
+var calculateUserCreditRating = function(userId, accountNumber){
+    var API_URL = 'https://bankapi.azure-api.net/v1/bankTransaction/getBalanceByAccountNumber/' + accountNumber;
+    var headers = {"Ocp-Apim-Subscription-Key": "c5de97a26a0b41f7a25c40a5fa15fe90"};
+
+    console.log('getUserCreditRating');
+
+    HTTP.get(API_URL, {headers: headers}, function (error, result) {
+        if (!error && result && result.content) {
+
+            var userCreditRating = 0.001;
+            var balance = Number(result.content);
+
+            switch (true){
+                case balance > 10000:
+                    userCreditRating = 1;
+                case balance <= 100:
+                default:
+                    break;
+            }
+
+
+
+            Meteor.users.update({_id: userId}, {$set: {userCreditRating: userCreditRating}});
+        }
+        else{
+            console.error('Error occurs: ', error);
+        }
+    });
+};
+
 // helpers
 Meteor.users.helpers({
     userCreditRatingStr: function() {
@@ -78,7 +108,10 @@ Meteor.users.attachSchema(new SimpleSchema({
         // patch for demo only
         autoValue: function() {
             if (this.isInsert) {
-                return Number(Math.random().toFixed(3));
+                calculateUserCreditRating(this._id, this.accountNumber);
+
+                //return default value and calculate the new one based on bank API
+                return 0.001;
             }
         }
     },
