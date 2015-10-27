@@ -1,15 +1,18 @@
 <template name="navElem">
     <ul id="{{id}}" class="{{class}}">
-        <li><a href="{{pathFor 'loans'}}">Loans</a></li>
-
+        <li><a href="{{pathFor 'loans'}}">{{_ "Loans list"}}</a></li>
+        <li><a href="{{pathFor 'loan-form'}}">{{_ "Create Loan"}}</a></li>
         {{#if currentUser}}
-        <li><a href="{{pathFor 'myLoans'}}">My loans</a></li>
+        <li><a href="{{pathFor 'myLoans'}}">{{_ "My loans requests"}}</a></li>
         {{/if}}
+        
 
-        <li><a href="{{pathFor 'loan-form'}}">Create Loan</a></li>
-        <li><a href="{{pathFor 'investment-list'}}">My Investments</a></li>
-        <li><a href="{{pathFor 'auto-investment'}}">Auto Investment</a></li>
-        {{>atNavButton}}
+
+
+        <!--<li><a href="{{pathFor 'loan-form'}}">Create Loan</a></li>-->
+        <!--<li><a href="{{pathFor 'investment-list'}}">My Investments</a></li>-->
+        <!--<li><a href="{{pathFor 'auto-investment'}}">Auto Investment</a></li>-->
+        <li>{{>atNavButton}}</li>
     </ul>
     {{> UI.contentBlock}}
 </template>

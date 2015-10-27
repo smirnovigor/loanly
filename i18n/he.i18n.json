@@ -1,5 +1,7 @@
 {
-    "Loanly" : "ההלוואות שלי",
+    "Loans list" : "רשימת הלוואות",
+    "Create Loan" : "צור הלוואה",
+    "Loanly" : "לונלי",
     "Loans requests" : "רשימת בקשות להלוואה",
 
     "loan for other purposes" : "הלוואה למטרה אחרת",
@@ -51,5 +53,27 @@
     "city" : "עיר",
     "street" : "רחוב",
     "apartment_number" : "מספר דירה",
-    "hause_number" : "מספר בית"
+    "hause_number" : "מספר בית",
+
+    "Give loan" : "תן הלוואה",
+    "Take loan" : "קח הלוואה",
+    "Borrow at attractive interest rates" : "קח הלוואה בריבית אטרקטיבית",
+    "From %s annual interest" : "מ- %s ריבית שנתית",
+    "The loan amount ?" : "סכום ההלוואה?",
+    "A few years ?" : "לכמה שנים?",
+    "The loan amount ?" : "סכום ההלוואה?",
+    "minYear" : 1,
+    "maxYear" : 3,
+    "yearStep" : 1,
+
+    "Lend and enjoy attractive interest" : "תן הלוואה ותיהנה מריבית אטרקטיבית",
+    "Apply for a loan" : "הגש בקשה להלוואה",
+    "Subscribe to give loan" : "הירשם ותן הלוואה",
+    "Annual interest" : "ריבית שנתית",
+    "around" : "כ",
+
+    "Search" : "חיפוש",
+    "Write loan name" : "הזן את שם ההלוואה"
+
+
 }
