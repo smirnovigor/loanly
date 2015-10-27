@@ -51,5 +51,23 @@
     "city" : "עיר",
     "street" : "רחוב",
     "apartment_number" : "מספר דירה",
-    "hause_number" : "מספר בית"
+    "hause_number" : "מספר בית",
+
+    "Give loan" : "תן הלוואה",
+    "Take loan" : "קח הלוואה",
+    "Borrow at attractive interest rates" : "קח הלוואה בריבית אטרקטיבית",
+    "From %s annual interest" : "מ- %s ריבית שנתית",
+    "The loan amount ?" : "סכום ההלוואה?",
+    "A few years ?" : "לכמה שנים?",
+    "The loan amount ?" : "סכום ההלוואה?",
+    "minYear" : 1,
+    "maxYear" : 3,
+    "yearStep" : 1,
+
+    "Lend and enjoy attractive interest" : "תן הלוואה ותיהנה מריבית אטרקטיבית",
+    "Apply for a loan" : "הגש בקשה להלוואה",
+    "Subscribe to give loan" : "הירשם ותן הלוואה",
+    "Annual interest" : "ריבית שנתית",
+    "around" : "כ"
+
 }
