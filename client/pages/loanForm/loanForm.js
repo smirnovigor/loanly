@@ -68,18 +68,20 @@ Template.loanForm.events({
        var newLoan = {
            userId: Meteor.userId(),
            userCreditRating: Meteor.user().userCreditRating,
-           title: event.target.title.value,
+           title: $(event.target.title).find('option[value="' + event.target.title.value + '"]').text(),
            description: event.target.description.value,
            amount: parseInt(Session.get('amount')),
            period: parseInt(Session.get('period')),
            rate: parseInt(Session.get('rate')),
-           categoryId : 0,
+           categoryId : Number(event.target.title.value),
            createdAt : createdAt,
            endsAt : endsAt
        };
 
        if(ctx.validate(newLoan)){
-           Loans.insert(newLoan);
+           let id = Loans.insert(newLoan);
+
+           changeLoanStatusToActive(id);
 
            Router.go('/my-loans');
 
@@ -96,6 +98,12 @@ Template.loanForm.events({
        }
     }
 });
+
+var changeLoanStatusToActive = function(id){
+    Meteor.setTimeout(function(){
+        Loans.update(id, {$set: {status: 'active'}});
+    },5000);
+};
 
 var calculateMinRate = function(){
     var userCreditRating = Meteor.user().userCreditRating;

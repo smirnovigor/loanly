@@ -35,7 +35,7 @@ Template.userprofile.helpers({
        return Loans.find();
     },
     loansFinished : function(){
-        Meteor.subscribe('loans', Meteor.userId(), 'finished');
+        Meteor.subscribe('loans', Meteor.userId(), 'completed');
         return Loans.find();
     },
     loansActive : function(){
