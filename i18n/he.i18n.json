@@ -21,7 +21,7 @@
     "Days" : "ימים",
     "Today" : "היום",
 
-    "rate" : "צואה",
+    "rate" : "תשואה",
 
     "more details" : "מידע נוסף",
     "close" : "סגור",
@@ -31,7 +31,7 @@
     "Ends at date" : "תאריך סיום",
     "Short period" : "תקופה קצרה",
     "User credit" : "קרדיט המשתמש",
-    "High rate" : "צואה גבוהה",
+    "High rate" : "תשואה גבוהה",
     "Low amount" : "סכום נמוך",
     "Nearing completion" : "קרוב לסיום",
 
@@ -70,7 +70,24 @@
     "around" : "כ",
 
     "Search" : "חיפוש",
-    "Write loan name" : "הזן את שם ההלוואה"
+    "Write loan name" : "הזן את שם ההלוואה",
 
+    "Auto Investment" : "השקעה אוטומטית",
 
+    "Amount" : "סכום",
+    "Risk" : "סיכון",
+    "Computed Profit" : "רווח מחושב",
+    "Computed Rate" : "ריבית מחושבת",
+    "Auto Investment For Repayment" : "המשך להשקיע את היתרה המצטברת",
+
+    "Title" : "כותרת",
+    "Rate" : "ריבית",
+    "User Credit Rating" : "דירוש אשראי לקוח",
+    "My part" : "החלק שלי",
+    "Investment Total Amount" : "כמה הושקע?",
+
+    "Accept" : "בצע",
+
+    "Made by" : "נעשה ע\"י",
+    "New Bank Site Developing Team" : "צוות פיתוח אתר חדש"
 }

@@ -1,86 +1,84 @@
 <template name="autoInvestment">
     <div class="container">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <h2 class="header">Auto Investment</h2>
-            </div>
-        </div>
-        <div class="row">
-            <a href="{{pathFor 'loan-list'}}" class="waves-effect waves-light btn">Back to loans</a>
-        </div>
+        <h2 class="header">{{_ "Auto Investment"}}</h2>
 
         <form class="calculate-investment">
-            <p class="range-field">
-                <label for="amountId">Amount</label>
-                <div>
-                    <output for="amountId" name="amountOutput" class="range-value">25000</output>
-                    <input id="amountId" type="range" name="amount" min="5000" max="50000" step="100"/>
-                </div>
-            </p>
-            <p class="range-field">
-                <label for="periodId">Period</label>
-                <div>
-                    <output for="periodId" name="periodOutput" class="range-value">21</output>
-                    <input id="periodId" type="range" name="period" min="6" max="36" />
-                </div>
-            </p>
-            <p class="range-field">
-                <label for="riskId">Risk</label>
-                <div>
-                    <output for="riskId" name="riskOutput" class="range-value">0.5</output>
-                    <input id="riskId" type="range" name="risk" min="0" max="1" step="0.05"/>
-                </div>
-            </p>
             <div class="row">
-                <p>
-                    <label for="computedProfitId">Computed Profit:</label>
-                    <span id="computedProfitId">{{computedProfit}}</span>
-                </p>
-                <p>
-                    <label for="computedRateId">Computed Rate:</label>
-                    <span id="computedRateId">{{computedRate}}</span>
-                </p>
-                <p>
-                    <input type="checkbox" id="autoInvestmentForRepaymentsId"/>
-                    <label for="autoInvestmentForRepaymentsId">Auto Investment For Repayment</label>
-                </p>
+                <div class="col s12 m7">
+                    <p class="range-field">
+                        <label for="amountId">{{_ "Amount"}}</label>
+                    <div>
+                        <output for="amountId" name="amountOutput" class="range-value">{{money 25000}}</output>
+                        <input id="amountId" type="range" name="amount" min="5000" max="50000" step="100"/>
+                    </div>
+                    </p>
+                    <p class="range-field">
+                        <label for="periodId">{{_ "Period"}}</label>
+                    <div>
+                        <output for="periodId" name="periodOutput" class="range-value">{{count 21}}</output>
+                        <input id="periodId" type="range" name="period" min="6" max="36" />
+                    </div>
+                    </p>
+                    <p class="range-field">
+                        <label for="riskId">{{_ "Risk"}}</label>
+                    <div>
+                        <output for="riskId" name="riskOutput" class="range-value">{{percentage 0.5}}</output>
+                        <input id="riskId" type="range" name="risk" min="0" max="1" step="0.05"/>
+                    </div>
+                    </p>
+                </div>
+                <div class="col s12 m5">
+                    <p>
+                        <label for="computedProfitId">{{_ "Computed Profit"}}:</label>
+                        <span id="computedProfitId">{{money computedProfit}}</span>
+                    </p>
+                    <p>
+                        <label for="computedRateId">{{_ "Computed Rate"}}:</label>
+                        <span id="computedRateId">{{percentage computedRate}}</span>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="autoInvestmentForRepaymentsId"/>
+                        <label for="autoInvestmentForRepaymentsId">{{_ "Auto Investment For Repayment"}}</label>
+                    </p>
+                </div>
             </div>
-            <button type="submit" class="waves-effect waves-light btn">Accept</button>
+
+            <div class="row">
+                <div class="col s12">
+                    <button type="submit" class="waves-effect waves-light btn">{{_ "Accept"}}</button>
+                </div>
+            </div>
         </form>
 
         <div class="row">
-            <table class="centered">
-                <thead>
-                <tr>
-                    <th>Loan id</th>
-                    <th>Rate</th>
-                    <th>User Credit Rating</th>
-                    <th>Amount</th>
-                    <th>My part</th>
-                    <th>Investment Total Amount</th>
-                    <th>Status</th>
-                    <th>Period</th>
-                    <th>investmentTotalAndMyPart</th>
-                    <th>match</th>
-                </tr>
-                </thead>
-                <tbody>
-                {{#each compatibleLoans}}
-                    <tr class="card hoverable card-content">
-                        <td><a href="{{pathFor 'loan-details'}}">{{_id}}</a></td>
-                        <td>{{percentage rate}}</td>
-                        <td>{{userCreditRating}}</td>
-                        <td>{{money amount}}</td>
-                        <td>{{money myPart}}</td>
-                        <td>{{money investmentTotalAmount}}</td>
-                        <td>{{status}}</td>
-                        <td>{{periodFilter period}}</td>
-                        <td>{{money investmentTotalAndMyPart}}</td>
-                        <td>{{match}}</td>
+            <div class="col s12 table-wrapper">
+                <table class="centered striped">
+                    <thead>
+                    <tr>
+                        <th>{{_ "Title"}}</th>
+                        <th>{{_ "Rate"}}</th>
+                        <th>{{_ "User Credit Rating"}}</th>
+                        <th>{{_ "Amount"}}</th>
+                        <th>{{_ "My part"}}</th>
+                        <th>{{_ "Investment Total Amount"}}</th>
+                        <th>{{_ "Period"}}</th>
                     </tr>
-                {{/each}}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {{#each compatibleLoans}}
+                        <tr class="card hoverable card-content">
+                            <td><a href="{{pathFor 'loan-details'}}">{{title}}</a></td>
+                            <td>{{percentage rate}}</td>
+                            <td>{{userCreditRating}}</td>
+                            <td>{{money amount}}</td>
+                            <td>{{money myPart}}</td>
+                            <td>{{money investmentTotalAmount}}</td>
+                            <td>{{period}} {{_ "Months"}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </template>
