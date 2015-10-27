@@ -33,6 +33,9 @@ Template.home.helpers({
     },
     investRate : function(){
         return 7.8;
+    },
+    createLoanQueryParams : function(){
+        return {year : Template.instance().yearRV.get(), amount : Template.instance().amountRV.get()};
     }
 });
 
@@ -44,3 +47,33 @@ Template.home.events({
         template.yearRV.set(e.target.value);
     }
 });
+
+//investRatePie
+Template.home.investRatePie = function() {
+    return {
+            title : false,
+            tooltip : false,
+            chart: {
+                renderTo: 'container',
+                type: 'pie',
+                height: "200",
+                width: "200",
+            },
+            plotOptions: {
+                pie: {
+                    shadow: false
+                }
+            },
+            series: [{
+                name: 'Browsers',
+                data: [["rate",8.7], ["empty",91.3]],
+                size: '100%',
+                innerSize: '80%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                }
+            }]
+
+    };
+};

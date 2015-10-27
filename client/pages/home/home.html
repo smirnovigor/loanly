@@ -28,7 +28,7 @@
                     </div>
                     
                     <div class="card-footer">
-                        <a class="waves-effect waves-light btn" href="{{pathFor 'loan-form'}}">{{_ "Apply for a loan"}}</a>
+                        <a class="waves-effect waves-light btn" href="{{pathFor 'loan-form' query=createLoanQueryParams}}">{{_ "Apply for a loan"}}</a>
                     </div>
                 </div>
             </div>
@@ -37,9 +37,12 @@
                     <h5>{{_ "Give loan"}}</h5>
 
                     <div class="invest-rate-pie">
-                        <div>{{_ "around"}}</div>
-                        <p class="percentage">{{percentage investRate}}</p>
-                        <div>{{_ "Annual interest"}}</div>
+                        {{> highchartsHelper chartId="invest-rate-pie" chartWidth="100%" charHeight="100%" chartObject=investRatePie}}
+                        <div class="invest-rate-pie-content">
+                            <div>{{_ "around"}}</div>
+                            <p class="percentage">{{percentage investRate}}</p>
+                            <div>{{_ "Annual interest"}}</div>
+                        </div>
                     </div>
 
                     <p>{{_ "Lend and enjoy attractive interest"}}</p>
