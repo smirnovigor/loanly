@@ -1,14 +1,14 @@
 Template.home.created = function(){
     this.amountRV = new ReactiveVar(12000);
-    this.yearRV = new ReactiveVar(2);
+    this.monthRV = new ReactiveVar(15);
 };
 
 Template.home.helpers({
     amount : function(){
         return Template.instance().amountRV.get();
     },
-    year : function(){
-        return Template.instance().yearRV.get();
+    month : function(){
+        return Template.instance().monthRV.get();
     },
     minAmount : function(){
         return 3000;
@@ -19,13 +19,13 @@ Template.home.helpers({
     amountStep : function(){
         return 1000;
     },
-    minYear : function(){
+    minMonth : function(){
         return 1;
     },
-    maxYear : function(){
-        return 3;
+    maxMonth : function(){
+        return 36;
     },
-    yearStep : function(){
+    monthStep : function(){
         return 1;
     },
     loanRate : function(){
@@ -35,7 +35,7 @@ Template.home.helpers({
         return 7.8;
     },
     createLoanQueryParams : function(){
-        return {year : Template.instance().yearRV.get(), amount : Template.instance().amountRV.get()};
+        return {month : Template.instance().monthRV.get(), amount : Template.instance().amountRV.get()};
     },
     investRatePie : function(){
         return {
@@ -71,7 +71,7 @@ Template.home.events({
     'change #amount-rage' : function(e, template){
         template.amountRV.set(e.target.value);
     },
-    'change #year-rage' : function(e, template){
-        template.yearRV.set(e.target.value);
+    'change #month-rage' : function(e, template){
+        template.monthRV.set(e.target.value);
     }
 });

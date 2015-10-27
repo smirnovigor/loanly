@@ -15,6 +15,7 @@ var buildSortParams = function(sortField, sortDirection) {
 
     sortParams[field] = direction;
 
+
     return sortParams;
 };
 
