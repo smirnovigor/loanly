@@ -12,9 +12,12 @@ Template.loanItem.events({
     "click .add": function (event) {
         event.preventDefault();
 
-        //TODO:: remove this ugly global
-        Session.set('currentLoan', this);
-
-        $('#investmentModal').openModal();
+        if (Meteor.user()){
+            //TODO:: remove this ugly global
+            Session.set('currentLoan', this);
+            $('#investmentModal').openModal();
+        } else {
+            //Router.go('signIn');
+        }
     }
 });
