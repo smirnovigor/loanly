@@ -4,6 +4,9 @@ Template.loanItem.helpers({
     },
     isWaiting : function(){
         return this.status === 'waiting';
+    },
+    isFinished : function(){
+        return this.status === 'finished';
     }
 });
 

@@ -4,12 +4,15 @@
         <p>
             <ul class="user-actions">
                 {{#if isWaiting}}<li><a href="#" class="right">{{_ "Edit"}}</a></li>{{/if}}
-                <li><a href="#" class="right">{{_ "Cancel"}}</a></li>
+                {{#unless isFinished}}<li><a href="#" class="right">{{_ "Cancel"}}</a></li>{{/unless}}
             </ul>
             {{#if isWaiting}}(*) {{_ "Waiting for approval"}}{{/if}}
         </p>
         {{/if}}
 
+        {{#if isFinished}}
+        <p>(*) {{_ "Finished"}}</p>
+        {{/if}}
         <div class="card">
             <div class="card-header clearfix">
                 <div class="date">
