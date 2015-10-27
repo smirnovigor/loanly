@@ -19,6 +19,20 @@ var buildSortParams = function(sortField, sortDirection) {
     return sortParams;
 };
 
+Meteor.publish('userCounts', function(userId) {
+    userId = userId || '';
+
+    Counts.publish(this, 'userLoansCount', Loans.find({userId : userId}), {
+        noReady: true
+    });
+
+    Counts.publish(this, 'userInvestmentCount', Loans.find({investorId : userId}), {
+        noReady: true
+    });
+});
+
+
+
 Meteor.publish('loans', function(userId, status) {
     var query = {};
 
