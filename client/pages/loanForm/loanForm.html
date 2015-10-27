@@ -53,25 +53,26 @@
                             <p><label class="lable" for="period">{{_"Period"}}</label></p>
                             <p class="range-field">
                                 <output for="period" name="period" class="range-value">{{year}}</output>
-                                <input type="range" name="period" id="period" min="1" max="36" value="{{year}}"/>
+                                <input type="range" name="period" id="period" min="3" max="36" value="{{year}}"/>
                             </p>
                         </div>
                     </div>
+
                     <div class="row">
+                        <div class="input-field col s12 m12 l6">
+                            <p><label class="lable" for="period">{{_"Interest"}}</label></p>
+                            <p class="range-field">
+                                <output for="rateId" name="rate" class="range-value">{{rate}}</output>
+                                <input type="range" name="rate" id="rateId" min="{{minimumrate}}" max="12" step="0.1" value="{{minimumrate}}"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row monthly-return">
                         <div class="input-field col s12 m12 l6">
                             <p><label class="lable" for="period">{{_"monthly return"}}</label></p>
                             <p class="range-field">
                                 <output for="monthlyReturn" name="monthlyReturn" class="range-value">{{monthlyReturn}}</output>
                                 <input type="range" disabled name="monthlyReturn" id="monthlyReturn" min="0" max="50000" value="{{monthlyReturn}}"/>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 m12 l6">
-                            <p><label class="lable" for="period">{{_"rate"}}</label></p>
-                            <p class="range-field">
-                                <output for="rateId" name="rate" class="range-value">{{rate}}</output>
-                                <input type="range" name="rate" id="rateId" min="{{minimumrate}}" max="12" step="0.1" value="{{minimumrate}}"/>
                             </p>
                         </div>
                     </div>
@@ -87,7 +88,7 @@
                             <!--</div>-->
                         <!--</div>-->
                     <!--</div>-->
-                    <button type="submit" class="waves-effect waves-light btn">Create</button>
+                    <button type="submit" class="waves-effect waves-light btn">{{_ "Add"}}</button>
                 </form>
             </div>
         </div>
