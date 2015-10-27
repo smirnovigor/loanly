@@ -19,7 +19,7 @@
     "Days" : "ימים",
     "Today" : "היום",
 
-    "rate" : "צואה",
+    "rate" : "תשואה",
 
     "more details" : "מידע נוסף",
     "close" : "סגור",
@@ -51,5 +51,22 @@
     "city" : "עיר",
     "street" : "רחוב",
     "apartment_number" : "מספר דירה",
-    "hause_number" : "מספר בית"
+    "hause_number" : "מספר בית",
+    "loan purpose" : "מטרת הלוואה",
+    "Choose your option": "בחר מטרת הלוואה",
+    "education" : "הלוואה ללימודים",
+    "mortgage" : "הלוואה משלימה למשכנתא",
+    "renovation": "הלוואה לשיפוץ",
+    "holidays": "הלוואה לחופשה",
+    "family event": "הלוואה לאירוע משפחתי",
+    "item purchase": "הלוואה לרכישת מוצר",
+    "debts": "הלוואה לכיסוי חובות",
+    "marriage event": "הלוואה למטרת חתונה",
+    "other purposes": "הלוואה למטרות אחרות",
+    "cosmetic treatment": "הלוואה לטיפול קוסמטי",
+    "credit amount": "סכום הלווה",
+    "monthly return": "גובה החזר חודשי",
+    "minimum calculated return rate": "ריבית מינימלית",
+    "add maximum return rate": "הכנס ריבית מקסימלית",
+    "Description": "פרטים נוספים"
 }

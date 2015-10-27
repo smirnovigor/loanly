@@ -1,40 +1,84 @@
 <template name="loanForm">
     <div class="container">
-        <div class="row">
+        <!--<div class="row">
             <div class="col s12 m12 l12">
                 <h2 class="header">Create Loan ({{random.value}})</h2>
             </div>
-        </div>
+        </div>-->
         <div class="row">
-            <a href="{{pathFor 'loan-list'}}" class="waves-effect waves-light btn">Back to loans</a>
+            <a href="{{pathFor 'loans'}}" class="waves-effect waves-light btn">Back to loans</a>
         </div>
         <div class="row">
             <div class="col s12">
                 <form class="new-loan">
                     <div class="row">
+                        <div class="col s12 m6 l4">
+                            <!--<label>{{_"loan purpose"}}</label>-->
+                            <select class="browser-default mdi-navigation-arrow-drop-down right" name="title" required>
+                                <option value="" disabled selected>{{_"Choose your option"}}</option>
+                                <option value="{{_"education"}}">{{_"education"}}</option>
+                                <option value="{{_"mortgage"}}">{{_"mortgage"}}</option>
+                                <option value="{{_"renovation"}}">{{_"renovation"}}</option>
+                                <option value="{{_"holidays"}}">{{_"holidays"}}</option>
+                                <option value="{{_"family event"}}">{{_"family event"}}</option>
+                                <option value="{{_"item purchase"}}">{{_"item purchase"}}</option>
+                                <option value="{{_"debts"}}">{{_"debts"}}</option>
+                                <option value="{{_"marriage event"}}">{{_"marriage event"}}</option>
+                                <option value="{{_"other purposes"}}">{{_"other purposes"}}</option>
+                                <option value="{{_"cosmetic treatment"}}">{{_"cosmetic treatment"}}</option>
+                            </select>
+                        </div>
+                    </div>
+                   <!-- <div class="row">
                         <div class="input-field col s12">
                             <input id="title" type="text" class="validate" maxlength="15" name="title" required>
                             <label for="title">Title</label>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="row">
                         <div class="input-field col s12">
                             <textarea id="description" class="materialize-textarea validate" name="description" required></textarea>
-                            <label for="description">Description</label>
+                            <label for="description">{{_"Description"}}</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s12 m6 l4">
-                            <input id="amount" type="number" class="validate" name="amount" required>
-                            <label for="amount">Amount</label>
+                        <div class="input-field col s12 m6 l6">
+                            <!--<input id="amount" type="number" class="validate" name="amount" required>-->
+                            <p><label class="lable" for="amountCredit">{{_"credit amount"}}</label></p>
+                            <p class="range-field">
+                                <output for="amount" name="amount" class="range-value">{{amount}}</output>
+                                <input type="range" name="amount" id="amount" min="0" max="50000" step="500" value="{{amount}}"/>
+                            </p>
                         </div>
-                        <div class="input-field col s12 m6 l4">
-                            <input id="period" type="number" placeholder="Number of month" class="validate" name="period" min="3" max="36" required>
-                            <label for="period" class="active" data-error="wrong" data-success="right">Period</label>
+                        <div class="input-field col s12 m6 l6">
+                            <!--<input id="period" type="number" placeholder="Number of month" class="validate" name="period" min="3" max="36" required>
+                            <label for="period" class="active" data-error="wrong" data-success="right">Period</label>-->
+                            <p><label class="lable" for="period">{{_"Period"}}</label></p>
+                            <p class="range-field">
+                                <output for="period" name="period" class="range-value">{{year}}</output>
+                                <input type="range" name="period" id="period" min="1" max="36" value="{{year}}"/>
+                            </p>
                         </div>
-                        <div class="input-field col s12 m6 l4">
-                            <input id="rate" type="number" class="validate" name="rate" required>
-                            <label for="rate">Rate</label>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l6">
+                            <p><label class="lable" for="period">{{_"monthly return"}}</label></p>
+                            <p class="range-field">
+                                <output for="monthlyReturn" name="monthlyReturn" class="range-value">{{monthlyReturn}}</output>
+                                <input type="range" disabled name="monthlyReturn" id="monthlyReturn" min="0" max="50000" value="{{monthlyReturn}}"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="input-field col s6 m6 l4">
+                                <i class="material-icons">star</i>
+                                {{_"minimum calculated return rate"}} {{minimumrate}}%
+                            </div>
+                            <div class="input-field col s6 m6 l2">
+                                <label for="rate">{{_"add maximum return rate"}}</label>
+                                <input id="rate" type="number" class="validate" name="rate" step="0.1" min="{{minimumrate}}" max="10" required>
+                            </div>
                         </div>
                     </div>
                     <button type="submit" class="waves-effect waves-light btn">Create</button>
