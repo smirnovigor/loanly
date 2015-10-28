@@ -6,6 +6,8 @@ Template.notification.onCreated(function(){
             if(isLoaded){
                 Materialize.toast(document.message, 5000);
                 console.log('notification is added', document.message);
+
+                Notifications.find(id, {$set: {status: 'read'}});
             }
         }
     });
