@@ -36,7 +36,7 @@ class InvestmentObserver {
         var investmentTotalAmount = loan.investments.reduce(function(memo, elem){return memo + elem.amount;}, 0);
 
         var updateObject = {$push: {investments: {userId: investment.investorId, amount:myPart}}};
-        this.createNotification(loan.userId, 'You just got investment ' + accounting.formatMoney(myPart, '₪') + ' from ' + investor.username);
+        this.createNotification(loan.userId, 'קבלת השקעה ' + accounting.formatMoney(myPart, '₪') + ' מ ' + investor.username);
 
         if(investmentTotalAmount + myPart >= loan.amount){
             // notify all investors about active loan state

@@ -158,7 +158,7 @@
         <li>
             <div class="collapsible-header active"><i class="material-icons">work</i>{{_ "halvaot_active"}}</div>
             <div class="collapsible-body">
-                <div class="s10">
+                <div class="s10 table-wrapper">
                     <table class="centered">
                         <thead>
                         <tr>
@@ -191,7 +191,7 @@
         <li>
             <div class="collapsible-header"><i class="material-icons">pause</i>{{_ "Waiting for approval"}}</div>
             <div class="collapsible-body">
-                <div class="s10">
+                <div class="s10 table-wrapper">
                     <table class="centered">
                         <thead>
                         <tr>
@@ -224,7 +224,7 @@
         <li>
             <div class="collapsible-header"><i class="material-icons">alarm_off</i>{{_ "halvaot_finished"}}</div>
             <div class="collapsible-body">
-                <div class="s10">
+                <div class="s10 table-wrapper">
                     <table class="centered">
                         <thead>
                         <tr>
@@ -260,32 +260,32 @@
 <div class="row">
     <div class="s4 col">
         <div class="invest-rate-pie">
-            {{> highchartsHelper chartId="invest-rate-pie" chartWidth="100%" charHeight="100%" chartObject=investRatePie}}
+            {{> highchartsHelper chartId="invest-rate-pie" chartWidth="70px" charHeight="70px" chartObject=investRatePie}}
             <div class="invest-rate-pie-content">
                 <div>{{_ "around"}}</div>
                 <p class="percentage">9.6</p>
-                <div>{{_ "Annual interest"}}</div>
             </div>
+            <div>{{_ "Annual interest"}}</div>
         </div>
     </div>
     <div class="s4 col">
         <div class="invest-rate-pie">
-            {{> highchartsHelper chartId="invest-rate-pie-average" chartWidth="100%" charHeight="100%" chartObject=investRatePieAverage}}
+            {{> highchartsHelper chartId="invest-rate-pie-average" chartWidth="70px" charHeight="70px" chartObject=investRatePieAverage}}
             <div class="invest-rate-pie-content">
                 <div>{{_ "around"}}</div>
                 <p class="percentage">2.6</p>
-                <div>{{_ "Annual interest"}}</div>
             </div>
+            <div>{{_ "Annual interest"}}</div>
         </div>
     </div>
     <div class="s4 col">
         <div class="invest-rate-pie">
-            {{> highchartsHelper chartId="invest-rate-pie-max" chartWidth="100%" charHeight="100%" chartObject=investRatePieMax}}
+            {{> highchartsHelper chartId="invest-rate-pie-max" chartWidth="70px" charHeight="70px" chartObject=investRatePieMax}}
             <div class="invest-rate-pie-content">
                 <div>{{_ "around"}}</div>
                 <p class="percentage">11.6</p>
-                <div>{{_ "Annual interest"}}</div>
             </div>
+            <div>{{_ "Annual interest"}}</div>
         </div>
     </div>
 </div>
