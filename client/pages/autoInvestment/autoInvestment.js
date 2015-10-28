@@ -24,7 +24,7 @@ Template.autoInvestment.events({
 
         createInvestments(tmp.compatibleLoansRV.get().compatibleLoans);
 
-        Router.go('/investments');
+        Router.go('userprofile', {userId : Meteor.userId()});
     },
 
     'input .calculate-investment' : function(event){
