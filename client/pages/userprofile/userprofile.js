@@ -4,12 +4,22 @@
 
 Template.userprofile.onRendered(function() {
     $(document).ready(function(){
+
         $('ul.tabs').tabs();
         $('.collapsible').collapsible({
             accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
         });
+        $(".click_balance").click(function() {
+
+            $(".balance").css("display", "none");
+            $(".hide-click").css("display", "block");
+        });
     });
+
 });
+
+
+
 
 //Template.userprofile.helpers({
 //    waitingInvestments : function(){
@@ -40,6 +50,10 @@ Template.userprofile.helpers({
         Meteor.subscribe('loans', Meteor.userId(), 'active');
         return Loans.find();
     },
+//    balanceUser : function(){
+//        Meteor.subscribe('users', Meteor.userId());
+//        return users.find();
+//    },
 
     investRatePie : function(){
         return {
