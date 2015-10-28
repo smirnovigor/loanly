@@ -127,5 +127,7 @@
     "Finished" : "הסתיים",
     "Back to loans" : "חזור לרשימת הלוואות",
     "Current Fundraising" : "מימון נוכחי",
+    "halvaot_active" : "הלוואות פעילות",
+    "halvaot_finished" : "הלוואות שהסתיימו",
     "You currently have lent to this loan" : "כבר לווית"
 }

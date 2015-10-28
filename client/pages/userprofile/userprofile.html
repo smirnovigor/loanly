@@ -156,6 +156,39 @@
 <div id="nihul_malvim" class="col s12">
     <ul class="collapsible" data-collapsible="accordion">
         <li>
+            <div class="collapsible-header"><i class="material-icons">work</i>{{_ "halvaot_active"}}</div>
+            <div class="collapsible-body">
+                <div class="s10">
+                    <table class="centered">
+                        <thead>
+                        <tr>
+                            <th>{{_ "Title"}}</th>
+                            <th>{{_ "Rate"}}</th>
+                            <th>{{_ "User Credit Rating"}}</th>
+                            <th>{{_ "Amount"}}</th>
+                            <th>{{_ "My part"}}</th>
+                            <th>{{_ "Investment Total Amount"}}</th>
+                            <th>{{_ "Period"}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each loansActive}}
+                        <tr class="card hoverable card-content">
+                            <td><a href="{{pathFor 'loan-details'}}">{{title}}</a></td>
+                            <td>{{percentage rate}}</td>
+                            <td>{{userCreditRating}}</td>
+                            <td>{{money amount}}</td>
+                            <td>{{money myPart}}</td>
+                            <td>{{money investmentTotalAmount}}</td>
+                            <td>{{period}} {{_ "Months"}}</td>
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </li>
+        <li>
             <div class="collapsible-header"><i class="material-icons">pause</i>{{_ "Waiting for approval"}}</div>
             <div class="collapsible-body">
                 <div class="s10">
@@ -189,7 +222,7 @@
             </div>
         </li>
         <li>
-            <div class="collapsible-header"><i class="material-icons">alarm_off</i>Finished</div>
+            <div class="collapsible-header"><i class="material-icons">alarm_off</i>{{_ "halvaot_finished"}}</div>
             <div class="collapsible-body">
                 <div class="s10">
                     <table class="centered">
@@ -206,39 +239,6 @@
                         </thead>
                         <tbody>
                         {{#each loansFinished}}
-                        <tr class="card hoverable card-content">
-                            <td><a href="{{pathFor 'loan-details'}}">{{title}}</a></td>
-                            <td>{{percentage rate}}</td>
-                            <td>{{userCreditRating}}</td>
-                            <td>{{money amount}}</td>
-                            <td>{{money myPart}}</td>
-                            <td>{{money investmentTotalAmount}}</td>
-                            <td>{{period}} {{_ "Months"}}</td>
-                        </tr>
-                        {{/each}}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="collapsible-header"><i class="material-icons">work</i>Active</div>
-            <div class="collapsible-body">
-                <div class="s10">
-                    <table class="centered">
-                        <thead>
-                        <tr>
-                            <th>{{_ "Title"}}</th>
-                            <th>{{_ "Rate"}}</th>
-                            <th>{{_ "User Credit Rating"}}</th>
-                            <th>{{_ "Amount"}}</th>
-                            <th>{{_ "My part"}}</th>
-                            <th>{{_ "Investment Total Amount"}}</th>
-                            <th>{{_ "Period"}}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {{#each loansActive}}
                         <tr class="card hoverable card-content">
                             <td><a href="{{pathFor 'loan-details'}}">{{title}}</a></td>
                             <td>{{percentage rate}}</td>
