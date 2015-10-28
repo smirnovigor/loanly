@@ -48,8 +48,8 @@ Template.userprofile.helpers({
             chart: {
                 renderTo: 'container',
                 type: 'pie',
-                height: "200",
-                width: "200",
+                height: "90",
+                width: "90",
             },
             plotOptions: {
                 pie: {
@@ -76,8 +76,8 @@ Template.userprofile.helpers({
             chart: {
                 renderTo: 'container',
                 type: 'pie',
-                height: "200",
-                width: "200",
+                height: "90",
+                width: "90",
             },
             plotOptions: {
                 pie: {
@@ -104,8 +104,8 @@ Template.userprofile.helpers({
             chart: {
                 renderTo: 'container',
                 type: 'pie',
-                height: "200",
-                width: "200",
+                height: "90",
+                width: "90",
             },
             plotOptions: {
                 pie: {
