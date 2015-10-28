@@ -7,6 +7,7 @@
                 {{#unless isFinished}}<li><a href="#" class="right">{{_ "Cancel"}}</a></li>{{/unless}}
             </ul>
             {{#if isWaiting}}(*) {{_ "Waiting for approval"}}{{/if}}
+            &nbsp;
         </p>
         {{/if}}
 
@@ -24,7 +25,7 @@
 
                 <div class="user">
                     <i class="material-icons {{user.userCreditRatingStr}}" title="{{user.userCreditRatingStr}}">grade</i>
-                    <span>{{user.username}}</span>
+                    <a href="{{pathFor 'userprofile'}}">{{user.username}}</a>
                 </div>
 
                 <small>{{_ "rate"}}</small>
