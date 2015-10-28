@@ -12,6 +12,7 @@ AutoInvestment = class AutoInvestment {
 
     calculate(){
         this.maxInvestmentPerLoan = 500;
+        debugger;
 
         do {
             console.log('calculating auto investment with %s amount, max investment per loan %s, for %s month period and %s risk', this.amount, this.maxInvestmentPerLoan, this.period, this.risk);
@@ -36,9 +37,8 @@ AutoInvestment = class AutoInvestment {
         // check the boundaries
         minUserCreditRating = minUserCreditRating < 0 ? 0 : minUserCreditRating;
         maxUserCreditRating = maxUserCreditRating > 1 ? 1 : maxUserCreditRating;
-
         var query = {
-            status: 'waiting',
+            status: 'active',
             period: {$lte: this.period},
             investments: {$not: {$elemMatch: {userId: Meteor.userId()}}},
             $and : [
