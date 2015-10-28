@@ -6,7 +6,7 @@ Template.loanItem.helpers({
         return this.status === 'waiting';
     },
     isFinished : function(){
-        return this.status === 'finished';
+        return this.status === 'completed';
     }
 });
 
