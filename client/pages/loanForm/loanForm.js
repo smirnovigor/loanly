@@ -22,7 +22,7 @@ Template.loanForm.helpers({
             Session.set('period', Router.current().params.query.month);
         } else if(Session.get('period')==null){
             console.log('empty');
-            Session.set('period', 18)
+            Session.set('period', 19)
         }
         return Session.get('period');
     },
