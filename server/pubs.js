@@ -33,14 +33,10 @@ Meteor.publish('userCounts', function(userId) {
 
 
 
-Meteor.publish('loans', function(userId, status) {
-    var query = {};
-
-    if (userId) query.userId = userId;
-    if (status) query.status = status;
-
+Meteor.publish('loans', function() {
     return Loans.find(query);
 });
+
 
 Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, q, userId) {
     q = q || '';
@@ -78,6 +74,15 @@ Meteor.publish('loans-list', function(skipCount, sortField, sortDirection, q, us
 
 Meteor.publish('loan-by-id', function(loanId) {
     return Loans.find(loanId);
+});
+
+Meteor.publish('investment-in-loans', function(investorId) {
+    var query = {};
+
+    if (userId) query.userId = userId;
+    if (status) query.status = status;
+
+    return Loans.find(query);
 });
 
 // ## repayments
