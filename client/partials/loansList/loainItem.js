@@ -22,5 +22,32 @@ Template.loanItem.events({
         } else {
             //Router.go('signIn');
         }
+    },
+    "click .progress": function (event, tmp) {
+        event.preventDefault();
+
+        if(Meteor.userId()){
+            var numOfInvestors = 5;
+            var users = Meteor.users.find().fetch();
+            var myPart = tmp.data.amount / numOfInvestors;
+            users.length = numOfInvestors; // limit users
+
+            var interval = Meteor.setInterval(function(){
+                numOfInvestors--;
+
+               var newInvestment = {
+                   investorId: users[numOfInvestors]._id,
+                   loanId: tmp.data._id,
+                   amount: parseInt(myPart),
+                   estimatedRepayment: parseInt(tmp.data.amount + tmp.data.amount * tmp.data.rate)
+               };
+
+               Investments.insert(newInvestment);// check investment insert hook in server/observers.js
+
+                if(numOfInvestors <= 0){
+                    interval();
+                }
+            }, 3000);
+        }
     }
 });

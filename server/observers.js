@@ -36,26 +36,25 @@ class InvestmentObserver {
         var investmentTotalAmount = loan.investments.reduce(function(memo, elem){return memo + elem.amount;}, 0);
 
         var updateObject = {$push: {investments: {userId: investment.investorId, amount:myPart}}};
-        this.createNotification(loan.userId, 'You just got investment ' + accounting.formatMoney(myPart, '₪') + ' from ' + investor.username);
-
+        this.createNotification(loan.userId, 'קבלת השקעה ' + accounting.formatMoney(myPart, '₪') + ' מ ' + investor.username);
 
         if(investmentTotalAmount + myPart >= loan.amount){
             // notify all investors about active loan state
             var investors = _.pluck(loan.investments, 'userId');
             investors.push(investment.investorId);
 
-            this.createNotification(investors, 'Your invested loan ' + loan.title + ' is completed now');
+            //this.createNotification(investors, 'Your invested loan ' + loan.title + ' is completed now');
 
             // notify loaner about his loan state change
-            this.createNotification(loan.userId, 'Your loan ' + loan.title + ' is completed now');
+            //this.createNotification(loan.userId, 'Your loan ' + loan.title + ' is completed now');
 
             // notify loaner that his balance has changed
-            this.createNotification(loan.userId, 'Your balance has been changed on ' + accounting.formatMoney(loan.amount, '₪') + ' from completed loan ' + loan.title);
+            //this.createNotification(loan.userId, 'Your balance has been changed on ' + accounting.formatMoney(loan.amount, '₪') + ' from completed loan ' + loan.title);
 
             Meteor.users.update(loan.userId, {$inc: {balance: loan.amount}});
 
             // notify investor that his balance has changed
-            this.createNotification(investment.investorId, 'Your balance has been changed on ' + accounting.formatMoney(myPartNegative, '₪'));
+            //this.createNotification(investment.investorId, 'Your balance has been changed on ' + accounting.formatMoney(myPartNegative, '₪'));
 
             Meteor.users.update(investment.investorId, {$inc: {balance: myPartNegative}});
 

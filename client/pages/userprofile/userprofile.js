@@ -27,9 +27,7 @@ Template.userprofile.onRendered(function() {
 //
 //});
 Template.userprofile.helpers({
-//    investments: function(){
-//        return Investments.find();
-//    }
+
     loansWaiting : function(){
        Meteor.subscribe('loans', Meteor.userId(), 'waiting');
        return Loans.find();
@@ -41,6 +39,91 @@ Template.userprofile.helpers({
     loansActive : function(){
         Meteor.subscribe('loans', Meteor.userId(), 'active');
         return Loans.find();
+    },
+
+    investRatePie : function(){
+        return {
+            title : false,
+            tooltip : false,
+            chart: {
+                renderTo: 'container',
+                type: 'pie',
+                height: "90",
+                width: "90",
+            },
+            plotOptions: {
+                pie: {
+                    shadow: false
+                }
+            },
+            series: [{
+                name: 'Browsers',
+                data: [["rate",8.7], ["empty",91.3]],
+                size: '100%',
+                innerSize: '80%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                }
+            }]
+
+        };
+    },
+    investRatePieAverage : function(){
+        return {
+            title : false,
+            tooltip : false,
+            chart: {
+                renderTo: 'container',
+                type: 'pie',
+                height: "90",
+                width: "90",
+            },
+            plotOptions: {
+                pie: {
+                    shadow: false
+                }
+            },
+            series: [{
+                name: 'Browsers',
+                data: [["rate",8.7], ["empty",91.3]],
+                size: '100%',
+                innerSize: '80%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                }
+            }]
+
+        };
+    },
+    investRatePieMax : function(){
+        return {
+            title : false,
+            tooltip : false,
+            chart: {
+                renderTo: 'container',
+                type: 'pie',
+                height: "90",
+                width: "90",
+            },
+            plotOptions: {
+                pie: {
+                    shadow: false
+                }
+            },
+            series: [{
+                name: 'Browsers',
+                data: [["rate",8.7], ["empty",91.3]],
+                size: '100%',
+                innerSize: '80%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                }
+            }]
+
+        };
     }
 
 });
