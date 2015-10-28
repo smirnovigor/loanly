@@ -47,7 +47,7 @@ Template.loanItem.events({
                 if(numOfInvestors <= 0){
                     interval();
                 }
-            }, 3000);
+            }, 1000);
         }
     }
 });
