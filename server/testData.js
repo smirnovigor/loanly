@@ -53,6 +53,7 @@ loadTestData = function loadTestData() {
                 categoryId : Number(Math.random() * 9).toFixed(), //TODO:: replace with LoansCategories length
                 investments : [{userId : users[Math.floor(Math.random() * users.length)]._id ,amount : investmentsAmount}],
                 createdAt : createdAt,
+                status: 'active',
                 endsAt : endsAt
             });
         }

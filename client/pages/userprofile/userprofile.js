@@ -39,16 +39,16 @@ Template.userprofile.onRendered(function() {
 Template.userprofile.helpers({
 
     loansWaiting : function(){
-       Meteor.subscribe('loans', Meteor.userId(), 'waiting');
-       return Loans.find();
+       Meteor.subscribe('investment-in-loans', Meteor.userId());
+       return Loans.find({status:'waiting'});
     },
     loansFinished : function(){
-        Meteor.subscribe('loans', Meteor.userId(), 'completed');
-        return Loans.find();
+        Meteor.subscribe('investment-in-loans', Meteor.userId());
+        return Loans.find({status:'completed'});
     },
     loansActive : function(){
-        Meteor.subscribe('loans', Meteor.userId(), 'active');
-        return Loans.find();
+        Meteor.subscribe('investment-in-loans', Meteor.userId());
+        return Loans.find({status:'active'});
     },
 //    balanceUser : function(){
 //        Meteor.subscribe('users', Meteor.userId());

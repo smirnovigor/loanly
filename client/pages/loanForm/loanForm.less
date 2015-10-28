@@ -4,10 +4,33 @@
     position: relative;
     bottom: 40%;
   }
+  .rage-wrapper{
+    margin-bottom: 30px;
+    .text-center{
+      text-align: center;
+    }
+    h6{
+      margin-top: 20px;
+      font-weight: bold;
+      text-shadow: 1px 1px 1px #fff;
+    }
+    p{
+      margin: 0;
+    }
+    span{
+      font-size:0.9rem;
+      &:first-of-type{
+        float: right;
+      }
+      &:last-of-type{
+        float: left;
+      }
+    }
+  }
 
   input[type="range"] {
-    width: 75%;
-    vertical-align: middle;
+   /* width: 75%;
+    vertical-align: middle;*/
 
     &:active {
       &::-moz-range-thumb, &::-webkit-slider-thumb {
