@@ -74,7 +74,7 @@ Loans.allow({
                 url += 'house';
             }
 
-            url += '?random=' + Math.floor(Math.random() * 1000);
+            url += '?random=' + this._id;
 
             return url;
         }
