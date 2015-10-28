@@ -121,12 +121,14 @@ Meteor.users.attachSchema(new SimpleSchema({
     balance: {
         type: Number,
         decimal: true,
+        optional: true,
+        defaultValue: 0
         // patch for demo only
-        autoValue: function() {
-            if (this.isInsert) {
-                return Number((Math.random() * 10000).toFixed(2));
-            }
-        }
+        //autoValue: function() {
+        //    if (this.isInsert) {
+        //        return Number((Math.random() * 10000).toFixed(2));
+        //    }
+        //}
     }
 }));
 

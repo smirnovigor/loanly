@@ -3,6 +3,7 @@
     "Create Loan" : "צור הלוואה",
     "Loanly" : "לונלי",
     "Loans requests" : "רשימת בקשות להלוואה",
+    "Portfolio loans" : "תיק הלוואות",
 
     "loan for other purposes" : "הלוואה למטרה אחרת",
     "loan for studies" : "הלוואה ללימודים",
@@ -97,7 +98,7 @@
    
 
     "Search" : "חיפוש",
-    "Write loan name" : "הזן את שם ההלוואה",
+    "Write loan name" : "הזן טקסט חופשי",
 
     "Auto Investment" : "השקעה אוטומטית",
 
@@ -116,5 +117,15 @@
     "Accept" : "בצע",
 
     "Made by" : "נעשה ע\"י",
-    "New Bank Site Developing Team" : "צוות פיתוח אתר חדש"
+    "New Bank Site Developing Team" : "צוות פיתוח אתר חדש",
+
+    "Investment amount" : "סכום השקעה",
+    "Add" : "הוסף",
+    "Estimated repayment" : "פירעון משוער",
+    "Interest" : "ריבית",
+
+    "Finished" : "הסתיים",
+    "Back to loans" : "חזור לרשימת הלוואות",
+    "Current Fundraising" : "מימון נוכחי",
+    "You currently have lent to this loan" : "כבר לווית"
 }

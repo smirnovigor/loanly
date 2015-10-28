@@ -134,12 +134,13 @@ Loans.attachSchema(new SimpleSchema({
         type: String,
         optional: true,
         defaultValue: 'waiting',
-        allowedValues: ['waiting', 'active', 'finished']
+        allowedValues: ['waiting', 'active', 'completed']
     },
     investments: {
         type: [Object],
         optional: true,
-        defaultValue: []
+        defaultValue: [],
+        blackbox: true
     },
     "investments.$.userId": {
         type: String,

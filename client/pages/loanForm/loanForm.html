@@ -1,12 +1,9 @@
 <template name="loanForm">
     <div class="container">
-        <!--<div class="row">
-            <div class="col s12 m12 l12">
-                <h2 class="header">Create Loan ({{random.value}})</h2>
-            </div>
-        </div>-->
         <div class="row">
-            <a href="{{pathFor 'loans'}}" class="waves-effect waves-light btn">Back to loans</a>
+            <div class="col s12 m12 l12">
+                <h2 class="header">{{_"Create Loan"}}</h2>
+            </div>
         </div>
         <div class="row">
             <div class="col s12">
@@ -16,16 +13,16 @@
                             <!--<label>{{_"loan purpose"}}</label>-->
                             <select class="browser-default mdi-navigation-arrow-drop-down right" name="title" required>
                                 <option value="" disabled selected>{{_"Choose your option"}}</option>
-                                <option value="{{_"education"}}">{{_"education"}}</option>
-                                <option value="{{_"mortgage"}}">{{_"mortgage"}}</option>
-                                <option value="{{_"renovation"}}">{{_"renovation"}}</option>
-                                <option value="{{_"holidays"}}">{{_"holidays"}}</option>
-                                <option value="{{_"family event"}}">{{_"family event"}}</option>
-                                <option value="{{_"item purchase"}}">{{_"item purchase"}}</option>
-                                <option value="{{_"debts"}}">{{_"debts"}}</option>
-                                <option value="{{_"marriage event"}}">{{_"marriage event"}}</option>
-                                <option value="{{_"other purposes"}}">{{_"other purposes"}}</option>
-                                <option value="{{_"cosmetic treatment"}}">{{_"cosmetic treatment"}}</option>
+                                <option value="1">{{_"education"}}</option>
+                                <option value="2">{{_"mortgage"}}</option>
+                                <option value="3">{{_"renovation"}}</option>
+                                <option value="4">{{_"holidays"}}</option>
+                                <option value="5">{{_"family event"}}</option>
+                                <option value="6">{{_"item purchase"}}</option>
+                                <option value="7">{{_"debts"}}</option>
+                                <option value="8">{{_"marriage event"}}</option>
+                                <option value="0">{{_"other purposes"}}</option>
+                                <option value="9">{{_"cosmetic treatment"}}</option>
                             </select>
                         </div>
                     </div>
@@ -56,11 +53,21 @@
                             <p><label class="lable" for="period">{{_"Period"}}</label></p>
                             <p class="range-field">
                                 <output for="period" name="period" class="range-value">{{year}}</output>
-                                <input type="range" name="period" id="period" min="1" max="36" value="{{year}}"/>
+                                <input type="range" name="period" id="period" min="3" max="36" value="{{year}}"/>
                             </p>
                         </div>
                     </div>
+
                     <div class="row">
+                        <div class="input-field col s12 m12 l6">
+                            <p><label class="lable" for="period">{{_"Interest"}}</label></p>
+                            <p class="range-field">
+                                <output for="rateId" name="rate" class="range-value">{{rate}}</output>
+                                <input type="range" name="rate" id="rateId" min="{{minimumrate}}" max="12" step="0.1" value="{{minimumrate}}"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row monthly-return">
                         <div class="input-field col s12 m12 l6">
                             <p><label class="lable" for="period">{{_"monthly return"}}</label></p>
                             <p class="range-field">
@@ -69,19 +76,19 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s12 m12 l12">
-                            <div class="input-field col s6 m6 l4">
-                                <i class="material-icons">star</i>
-                                {{_"minimum calculated return rate"}} {{minimumrate}}%
-                            </div>
-                            <div class="input-field col s6 m6 l2">
-                                <label for="rate">{{_"add maximum return rate"}}</label>
-                                <input id="rate" type="number" class="validate" name="rate" step="0.1" min="{{minimumrate}}" max="10" required>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="waves-effect waves-light btn">Create</button>
+                    <!--<div class="row">-->
+                        <!--<div class="col s12 m12 l12">-->
+                            <!--<div class="input-field col s6 m6 l4">-->
+                                <!--<i class="material-icons">star</i>-->
+                                <!--{{_"minimum calculated return rate"}} {{minimumrate}}%-->
+                            <!--</div>-->
+                            <!--<div class="input-field col s6 m6 l2">-->
+                                <!--<label for="rate">{{_"add maximum return rate"}}</label>-->
+                                <!--<input id="rate" type="number" class="validate" name="rate" step="0.1" min="{{minimumrate}}" max="10" required>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <button type="submit" class="waves-effect waves-light btn">{{_ "Add"}}</button>
                 </form>
             </div>
         </div>

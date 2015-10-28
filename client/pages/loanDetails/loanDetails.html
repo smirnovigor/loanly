@@ -1,43 +1,43 @@
 <template name="loanDetails">
-    <div class="container">
+    <div class="container loan-details">
         <div class="row">
             <div class="col s12 m12 l12">
-                <h2 class="header">Loan Details</h2>
+                <h2 class="header">{{title}}</h2>
             </div>
         </div>
         <div class="row">
-            <a href="{{pathFor 'loans'}}" class="waves-effect waves-light btn">Back to loans</a>
+            <a href="{{pathFor 'loans'}}" class="waves-effect waves-light btn">{{_ "Back to loans"}}</a>
         </div>
         <div class="row">
             <div class="col s12">
-                <p>
-                    <span>Title:</span>
-                    {{title}}
-                </p>
-                <p>
-                    <span>Description:</span>
-                    {{description}}
-                </p>
-                <p>
-                    <span>Amount:</span>
-                    {{money amount}}
-                </p>
-                <p>
-                    <span>Period:</span>
-                    {{periodFilter period}}
-                </p>
-                <p>
-                    <span>Rate:</span>
-                    {{percentage rate}}
-                </p>
-                <p>
-                    <span>User Credit Rating:</span>
-                    {{user.userCreditRatingStr}}
-                </p>
-                <p>
-                    <span>Current Fundraising:</span>
-                    {{money currentFundraising}}
-                </p>
+                <p>{{description}}</p>
+
+                <ul>
+                    <li>
+                        <h6>{{_ "Amount"}}</h6>
+                        <p>{{money amount}}</p>
+                    </li>
+                    <li>
+                        <h6>{{_ "Period"}}</h6>
+                        <p>{{period}} {{_ "Months"}}</p>
+                    </li>
+                    <li>
+                        <h6>{{_ "Rate"}}</h6>
+                        <p>{{percentage rate}}</p>
+                    </li>
+                    <li>
+                        <h6>{{_ "User Credit Rating"}}</h6>
+                        <p>{{user.userCreditRatingStr}}</p>
+                    </li>
+                    <li>
+                        <h6>{{_ "Current Fundraising"}}</h6>
+                        <p>{{money currentFundraising}}</p>
+                    </li>
+                    <li>
+                        <h6>{{_ "Amount"}}</h6>
+                        <p>{{money amount}}</p>
+                    </li>
+                </ul>
             </div>
         </div>
         {{#unless currentUserInvestment}}
