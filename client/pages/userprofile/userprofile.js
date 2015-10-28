@@ -29,15 +29,15 @@ Template.userprofile.onRendered(function() {
 Template.userprofile.helpers({
 
     loansWaiting : function(){
-       Meteor.subscribe('investment-in-loans');
+       Meteor.subscribe('investment-in-loans', Meteor.userId());
        return Loans.find({status:'waiting'});
     },
     loansFinished : function(){
-        Meteor.subscribe('investment-in-loans');
+        Meteor.subscribe('investment-in-loans', Meteor.userId());
         return Loans.find({status:'completed'});
     },
     loansActive : function(){
-        Meteor.subscribe('investment-in-loans');
+        Meteor.subscribe('investment-in-loans', Meteor.userId());
         return Loans.find({status:'active'});
     },
 

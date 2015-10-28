@@ -79,8 +79,12 @@ Meteor.publish('loan-by-id', function(loanId) {
 Meteor.publish('investment-in-loans', function(investorId) {
     var query = {};
 
-    if (userId) query.userId = userId;
-    if (status) query.status = status;
+    if (investorId){
+        query.investments = {$elemMatch: {userId: investorId}};
+    }
+    else{
+        query.noData = 'return no loans';
+    }
 
     return Loans.find(query);
 });

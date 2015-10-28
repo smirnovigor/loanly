@@ -44,6 +44,7 @@ Loans.allow({
             return this.categoryId ? LoansCategories[this.categoryId] : LoansCategories[0];
         },
         funded: function() {
+            console.log('funded', funded.bind(this)());
             return funded.bind(this)();
         },
         fundedPercentage: function() {
@@ -143,13 +144,10 @@ Loans.attachSchema(new SimpleSchema({
         blackbox: true
     },
     "investments.$.userId": {
-        type: String,
-        regEx: SimpleSchema.RegEx.Id
+        type: String
     },
     "investments.$.amount": {
-        type: Number,
-        min: 100,
-        max: 100000
+        type: Number
     },
     categoryId : {
         type: Number,
