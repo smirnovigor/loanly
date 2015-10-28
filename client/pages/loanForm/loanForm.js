@@ -17,9 +17,9 @@ Template.loanForm.helpers({
         }
         return Session.get('amount');
     },
-    year : function(){
-        if(Router.current().params.query.year){
-            return Session.set('period', (Router.current().params.query.year * 12));
+    period : function(){
+        if(Router.current().params.query.month){
+            Session.set('period', Router.current().params.query.month);
         } else if(Session.get('period')==null){
             console.log('empty');
             Session.set('period', 18)
@@ -50,7 +50,7 @@ Template.loanForm.events({
             Router.current().params.query.amount = false;
             Session.set('amount', event.target.value);
         } else if (event.target.name === 'period') {
-            Router.current().params.query.year = false;
+            Router.current().params.query.month = false;
             Session.set('period', event.target.value);
         } else if (event.target.name === 'rate') {
             Session.set('rate', event.target.value);
